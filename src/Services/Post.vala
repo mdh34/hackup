@@ -24,12 +24,11 @@ public class Post {
     public string title;
     public string comment_uri;
     public string story_uri;
-    private Soup.Session session;
 
     public Post (string item) {
         var uri = "https://hacker-news.firebaseio.com/v0/item/" + item + ".json?print=pretty";
         var message = new Soup.Message ("GET", uri);
-        session = new Soup.Session ();
+        var session = new Soup.Session ();
         session.send_message (message);
 
         try {

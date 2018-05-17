@@ -7,7 +7,10 @@
   <name>HackUp</name>
   <summary>Read Hacker News from the desktop</summary>
   <description>
-    <p>HN FTW</p>
+    <ul>
+      <li>Read Hacker News stories and comments from the desktop</li>
+      <li>Sort by top, new and best stories</li>
+    </ul>
   </description>
   <provides>
     <binary>com.github.mdh34.hackup</binary>
@@ -16,8 +19,8 @@
   <url type="homepage">https://github.com/mdh34/hackup</url>
   <url type="bugtracker">https://github.com/mdh34/hackup/issues</url>
   <custom>
-    <value key="x-appcenter-color-primary">#F36620</value>
-    <value key="x-appcenter-color-primary-text">#000000</value>
+    <value key="x-appcenter-color-primary">#FF6600</value>
+    <value key="x-appcenter-color-primary-text">#FFFFFF</value>
     <value key="x-appcenter-suggested-price">2</value>
   </custom>
   <content_rating type="oars-1.1">

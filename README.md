@@ -1,4 +1,5 @@
 # HackUp
+[![build](https://travis-ci.org/mdh34/hackup.svg?branch=master)](https://travis-ci.org/mdh34/hackup)
 
 Read Hacker News from the desktop
 

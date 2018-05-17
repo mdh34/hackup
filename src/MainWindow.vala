@@ -47,10 +47,14 @@ public class MainWindow : Gtk.Window {
         stack = new Gtk.Stack ();
         stack.set_transition_type (Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
 
+
         var back_button = new Gtk.Button.with_label ("Back");
         back_button.get_style_context ().add_class (Granite.STYLE_CLASS_BACK_BUTTON);
         back_button.clicked.connect (() => {
             stack.set_visible_child_name ("scroller");
+        });
+        stack.notify["visible-child"].connect (() => {
+            stack_changed (back_button);
         });
         header.pack_start (back_button);
 
@@ -70,10 +74,22 @@ public class MainWindow : Gtk.Window {
         add (stack);
         show_all ();
 
+        back_button.visible = false;
+
     }
 
     public static void load_page (string uri) {
         view.load_uri (uri);
         stack.set_visible_child_name ("browser");
+    }
+
+    private void stack_changed (Gtk.Button button) {
+        if (stack.visible_child_name == "scroller") {
+            button.visible = false;
+            warning ("hiding button");
+        } else {
+            button.visible = true;
+            warning ("showing button");
+        }
     }
 }

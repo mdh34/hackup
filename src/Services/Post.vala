@@ -22,7 +22,6 @@
 public class Post {
     public string author;
     public string title;
-    public string text;
     public string comment_uri;
     public string story_uri;
     private Soup.Session session;
@@ -37,10 +36,15 @@ public class Post {
             var parser = new Json.Parser ();
             parser.load_from_data ((string) message.response_body.flatten ().data, -1);
             var root_object = parser.get_root ().get_object ();
-            author = root_object.get_string_member ("by");
-            title = root_object.get_string_member ("title");
-            text = root_object.get_string_member ("text");
-            story_uri = root_object.get_string_member ("url");
+            if (root_object.has_member ("by")) {
+                author = root_object.get_string_member ("by");
+            }
+            if (root_object.has_member ("title")) {
+                 title = root_object.get_string_member ("title");
+            }
+            if (root_object.has_member ("url")) {
+                 story_uri = root_object.get_string_member ("url");
+            }
             comment_uri = "https://news.ycombinator.com/item?id=" + item;
         } catch (Error e) {
             warning ("Error parsing data: %s", e.message);

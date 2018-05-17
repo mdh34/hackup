@@ -25,16 +25,21 @@ public class PostEntry : Gtk.Box {
         this.spacing = 5;
         var author_label = new Gtk.Label (post.author);
         var title_label = new Gtk.Label (post.title);
-        var open_button = new Gtk.Button.from_icon_name ("window-new");
-        open_button.hexpand = false;
-        open_button.clicked.connect (() => {
-            warning ("open button clicked for id %s", id);
+        var comment_button = new Gtk.Button.from_icon_name ("mail-message-new");
+        comment_button.clicked.connect (() => {
+            MainWindow.load_page (post.comment_uri);
+        });
+
+        var story_button = new Gtk.Button.from_icon_name ("document-export");
+        story_button.clicked.connect (() => {
+            MainWindow.load_page (post.story_uri);
         });
         author_group.add_widget (author_label);
         title_group.add_widget (title_label);
         pack_start (author_label);
         pack_start (title_label);
-        pack_start (open_button);
+        pack_start (comment_button, false, false);
+        pack_start (story_button, false, false);
         show_all ();
     }
 

@@ -21,8 +21,8 @@
 
 public class MainWindow : Gtk.Window {
     static GLib.Settings settings;
-    Gtk.Stack stack;
-
+    static Gtk.Stack stack;
+    static WebKit.WebView view;
     public MainWindow (Gtk.Application application) {
         Object (
             application: application,
@@ -33,6 +33,7 @@ public class MainWindow : Gtk.Window {
 
     static construct {
         settings = new GLib.Settings ("com.github.mdh34.hackup");
+        view = new WebKit.WebView ();
     }
     construct {
         set_position (Gtk.WindowPosition.CENTER);
@@ -41,11 +42,17 @@ public class MainWindow : Gtk.Window {
         header.set_show_close_button (true);
         var header_context = header.get_style_context ();
         header_context.add_class (Gtk.STYLE_CLASS_FLAT);
-        header_context.add_class ("default-decoration");
         set_titlebar (header);
 
         stack = new Gtk.Stack ();
         stack.set_transition_type (Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
+
+        var back_button = new Gtk.Button.with_label ("Back");
+        back_button.get_style_context ().add_class (Granite.STYLE_CLASS_BACK_BUTTON);
+        back_button.clicked.connect (() => {
+            stack.set_visible_child_name ("scroller");
+        });
+        header.pack_start (back_button);
 
         var window_width = settings.get_int ("width");
         var window_height = settings.get_int ("height");
@@ -59,8 +66,14 @@ public class MainWindow : Gtk.Window {
 
         var list = new PostList ();
         stack.add_titled (list, "scroller", "HN");
+        stack.add_titled (view, "browser", "browser");
         add (stack);
         show_all ();
 
+    }
+
+    public static void load_page (string uri) {
+        view.load_uri (uri);
+        stack.set_visible_child_name ("browser");
     }
 }

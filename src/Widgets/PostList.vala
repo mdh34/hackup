@@ -19,7 +19,7 @@
  * Authored by: Matt Harris <matth281@outlook.com>
  */
 
-class PostList : Gtk.ScrolledWindow {
+public class PostList : Gtk.ScrolledWindow {
     public PostList () {
         hscrollbar_policy = Gtk.PolicyType.NEVER;
         var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 10);

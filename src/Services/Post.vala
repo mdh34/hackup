@@ -23,6 +23,8 @@ public class Post {
     public string author;
     public string title;
     public string text;
+    public string comment_uri;
+    public string story_uri;
     private Soup.Session session;
 
     public Post (string item) {
@@ -38,6 +40,8 @@ public class Post {
             author = root_object.get_string_member ("by");
             title = root_object.get_string_member ("title");
             text = root_object.get_string_member ("text");
+            story_uri = root_object.get_string_member ("url");
+            comment_uri = "https://news.ycombinator.com/item?id=" + item;
         } catch (Error e) {
             warning ("Error parsing data: %s", e.message);
         }

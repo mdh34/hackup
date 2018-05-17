@@ -25,7 +25,7 @@ public class PostEntry : Gtk.Box {
         this.spacing = 5;
         var author_label = new Gtk.Label (post.author);
         var title_label = new Gtk.Label (post.title);
-        var comment_button = new Gtk.Button.from_icon_name ("mail-message-new");
+        var comment_button = new Gtk.Button.from_icon_name ("edit");
         comment_button.clicked.connect (() => {
             MainWindow.load_page (post.comment_uri);
         });

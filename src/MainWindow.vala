@@ -58,6 +58,13 @@ public class MainWindow : Gtk.Window {
         });
         header.pack_start (back_button);
 
+
+        var settings_popover = new Gtk.Popover (null);
+        var settings_button = new Gtk.MenuButton ();
+        settings_button.image = new Gtk.Image.from_icon_name ("open-menu", Gtk.IconSize.SMALL_TOOLBAR);
+        settings_button.popover = settings_popover;
+        header.pack_end (settings_button);
+
         var window_width = settings.get_int ("width");
         var window_height = settings.get_int ("height");
         set_default_size (window_width, window_height);
@@ -86,10 +93,8 @@ public class MainWindow : Gtk.Window {
     private void stack_changed (Gtk.Button button) {
         if (stack.visible_child_name == "scroller") {
             button.visible = false;
-            warning ("hiding button");
         } else {
             button.visible = true;
-            warning ("showing button");
         }
     }
 }

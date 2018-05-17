@@ -29,6 +29,10 @@ public class Hackup : Gtk.Application {
     public override void activate () {
         var window = new MainWindow (this);
 
+        var provider = new Gtk.CssProvider ();
+        provider.load_from_resource ("/com/github/mdh34/hackup/Application.css");
+        Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
         var quit_action = new SimpleAction ("quit", null);
         add_action (quit_action);
         set_accels_for_action ("app.quit", {"<Control>q"});

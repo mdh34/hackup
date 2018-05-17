@@ -18,24 +18,18 @@
  *
  * Authored by: Matt Harris <matth281@outlook.com>
  */
-namespace TopStories {
-    public string[] get_top () {
-        var uri = "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty";
+namespace Stories {
+    public string[] get_posts (string type) {
+        var uri = "https://hacker-news.firebaseio.com/v0/" + type + "stories.json?print=pretty";
         var message = new Soup.Message ("GET", uri);
         var session = new Soup.Session ();
         session.send_message (message);
 
-        try {
-            var data = (string) message.response_body.flatten ().data;
-            data = data.delimit ("[]", ' ');
-            data = data._strip();
-            string[] array = data.split (", ");
-            return array;
-
-        } catch (Error e) {
-            warning ("Error parsing data: %s", e.message);
-            return {""};
-        }
+        var data = (string) message.response_body.flatten ().data;
+        data = data.delimit ("[]", ' ');
+        data = data._strip();
+        string[] array = data.split (", ");
+        return array;
 
     }
 }

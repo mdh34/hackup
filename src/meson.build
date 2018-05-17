@@ -3,9 +3,10 @@ executable(
     'Application.vala',
     'MainWindow.vala',
     'Services/Post.vala',
-    'Services/TopStories.vala',
+    'Services/Stories.vala',
     'Widgets/PostEntry.vala',
     'Widgets/PostList.vala',
+    asresources,
     dependencies: [
     	dependency('granite'),
         dependency('gtk+-3.0'),

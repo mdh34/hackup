@@ -23,5 +23,10 @@
       <summary>Window Y position</summary>
       <description>Stores the window's last Y position</description>
     </key>
+    <key name="listtype" type="s">
+      <default>"top"</default>
+      <summary>Story list type</summary>
+      <description>Stores the type of stories to get (top, best, new)</description>
+    </key>
   </schema>
 </schemalist>

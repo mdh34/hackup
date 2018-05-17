@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema path="/com/github/mdh34/hackup/"
+  id="com.github.mdh34.hackup"
+  gettext-domain="com.github.mdh34.hackup">
+    <key name="width" type="i">
+      <default>1000</default>
+      <summary>Window width</summary>
+      <description>Stores the windows last width</description>
+    </key>
+    <key name="height" type="i">
+      <default>1000</default>
+      <summary>Window height</summary>
+      <description>Stores the windows last height</description>
+    </key>
+    <key name="x" type="i">
+      <default>-1</default>
+      <summary>Window X position</summary>
+      <description>Stores the window's last X position</description>
+    </key>
+    <key name="y" type="i">
+      <default>-1</default>
+      <summary>Window Y position</summary>
+      <description>Stores the window's last Y position</description>
+    </key>
+  </schema>
+</schemalist>

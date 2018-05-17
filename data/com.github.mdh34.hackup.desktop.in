@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=HackUp
+GenericName=HackUp
+Comment=Read Hacker News from the desktop
+Categories=Development;
+Exec=com.github.mdh34.hackup
+Icon=com.github.mdh34.hackup
+Terminal=false
+Type=Application
+X-GNOME-Gettext-Domain=com.github.mdh34.hackup
+Keywords=hn;news;hacker;hackup;

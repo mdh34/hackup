@@ -22,7 +22,7 @@
 public class PostList : Gtk.ListBox {
     public PostList () {
         activate_on_single_click = true;
-        set_selection_mode (Gtk.SelectionMode.SINGLE);
+        set_selection_mode (Gtk.SelectionMode.NONE);
 
         var settings = new GLib.Settings ("com.github.mdh34.hackup");
         var type = settings.get_string ("listtype");

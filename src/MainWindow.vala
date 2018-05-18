@@ -72,6 +72,8 @@ public class MainWindow : Gtk.Window {
         add (pane);
         show_all ();
 
+        list.set_selection_mode (Gtk.SelectionMode.SINGLE);
+
         this.delete_event.connect (() => {
             int current_x, current_y, width, height;
             get_position (out current_x, out current_y);

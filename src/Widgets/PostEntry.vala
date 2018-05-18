@@ -39,7 +39,7 @@ public class PostEntry : Gtk.ListBoxRow {
         score_context.add_class (Granite.STYLE_CLASS_ACCENT);
 
         var title_label = new Gtk.Label (post.title);
-        title_label.get_style_context ().add_class ("h3");
+        title_label.get_style_context ().add_class ("h4");
         title_label.set_ellipsize (Pango.EllipsizeMode.END);
         var comment_button = new Gtk.Button.from_icon_name ("edit-symbolic");
         comment_button.set_relief (Gtk.ReliefStyle.NONE);

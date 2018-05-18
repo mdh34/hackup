@@ -2,8 +2,13 @@
 @define-color colorAccent @colorPrimary;
 @define-color textColorPrimary #FFFFFF;
 
-.listboxpadding {
+.listbox {
   padding: 5px;
+  border-bottom: 1px solid #abacae;
+}
+
+.titlesize {
+  font-size: 14px;
 }
 
 *:selected {

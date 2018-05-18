@@ -40,7 +40,10 @@ public class PostEntry : Gtk.ListBoxRow {
 
         var title_label = new Gtk.Label (post.title);
         title_label.get_style_context ().add_class ("h4");
+        title_label.get_style_context ().add_class ("titlesize");
         title_label.set_ellipsize (Pango.EllipsizeMode.END);
+        title_label.xalign = 0;
+
         var comment_button = new Gtk.Button.from_icon_name ("edit-symbolic");
         comment_button.set_relief (Gtk.ReliefStyle.NONE);
         comment_button.clicked.connect (() => {
@@ -68,7 +71,7 @@ public class PostEntry : Gtk.ListBoxRow {
         box.pack_start (info_box,true, true);
         add (box);
 
-        get_style_context ().add_class ("listboxpadding");
+        get_style_context ().add_class ("listbox");
     }
 
 }

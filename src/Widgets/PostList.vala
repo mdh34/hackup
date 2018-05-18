@@ -31,9 +31,10 @@ public class PostList : Gtk.ListBox {
         var author_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.BOTH);
         var title_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.BOTH);
         var comments_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.BOTH);
+        var score_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.BOTH);
 
         for (int i = 0; i < 40; i++) {
-            add (new PostEntry(top[i], author_group, title_group, comments_group));
+            add (new PostEntry(top[i], score_group, title_group, comments_group, author_group));
         }
 
         row_selected.connect ((row) => {

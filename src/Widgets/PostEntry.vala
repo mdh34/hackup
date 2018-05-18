@@ -21,7 +21,7 @@
 
 public class PostEntry : Gtk.ListBoxRow {
     public Post post;
-    public PostEntry (string id, Gtk.SizeGroup score_group, Gtk.SizeGroup title_group, Gtk.SizeGroup comments_group) {
+    public PostEntry (string id, Gtk.SizeGroup score_group, Gtk.SizeGroup title_group, Gtk.SizeGroup comments_group, Gtk.SizeGroup author_group) {
 
         post = new Post (id);
 
@@ -55,16 +55,18 @@ public class PostEntry : Gtk.ListBoxRow {
         title_group.add_widget (title_label);
         score_group.add_widget (score_label);
         comments_group.add_widget (comments_label);
+        author_group.add_widget (author_label);
 
-        var grid = new Gtk.Grid ();
-        grid.row_spacing = 5;
-        grid.column_spacing = 5;
-        grid.attach (author_label, 0, 2, 1, 1);
-        grid.attach (title_label, 0, 1, 1, 1);
-        grid.attach (score_label, 1, 2, 1, 1);
-        grid.attach (comments_label, 2, 2, 1, 1);
-        grid.attach (comment_button, 3, 2, 1, 1);
-        add (grid);
+        var info_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
+        info_box.pack_start (author_label);
+        info_box.pack_start (score_label);
+        info_box.pack_start (comments_label);
+        info_box.pack_start (comment_button);
+
+        var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
+        box.pack_start (title_label);
+        box.pack_start (info_box,true, true);
+        add (box);
     }
 
 }

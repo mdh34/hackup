@@ -27,8 +27,8 @@ namespace Stories {
 
         var data = (string) message.response_body.flatten ().data;
         data = data.delimit ("[]", ' ');
-        data = data._strip();
-        string[] array = data.split (", ");
+        data = data._strip ();
+        string [] array = data.split (", ");
         return array;
 
     }

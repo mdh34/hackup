@@ -19,18 +19,24 @@
  * Authored by: Matt Harris <matth281@outlook.com>
  */
 
-public class PostList : Gtk.ScrolledWindow {
+public class PostList : Gtk.ListBox {
     public PostList () {
+        activate_on_single_click = true;
+        set_selection_mode (Gtk.SelectionMode.SINGLE);
+
         var settings = new GLib.Settings ("com.github.mdh34.hackup");
         var type = settings.get_string ("listtype");
-        hscrollbar_policy = Gtk.PolicyType.NEVER;
-        var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 10);
         var top = Stories.get_posts (type);
+
         var author_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.BOTH);
         var title_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.BOTH);
+
         for (int i = 0; i < 40; i++) {
-            box.pack_start (new PostEntry(top[i], author_group, title_group));
+            add (new PostEntry(top[i], author_group, title_group));
         }
-        add (box);
+
+        row_selected.connect ((row) => {
+             MainWindow.load_page (((PostEntry) row).post.story_uri);
+        });
     }
 }

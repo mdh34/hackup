@@ -21,9 +21,10 @@
 
 public class Post {
     public string author;
-    public string title;
     public string comment_uri;
     public string story_uri;
+    public string title;
+    public int64 score;
 
     public Post (string item) {
         var uri = "https://hacker-news.firebaseio.com/v0/item/" + item + ".json?print=pretty";
@@ -43,6 +44,9 @@ public class Post {
             }
             if (root_object.has_member ("url")) {
                  story_uri = root_object.get_string_member ("url");
+            }
+            if (root_object.has_member ("score")) {
+                 score = root_object.get_int_member ("score");
             }
             comment_uri = "https://news.ycombinator.com/item?id=" + item;
         } catch (Error e) {

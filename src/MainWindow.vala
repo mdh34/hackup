@@ -21,7 +21,6 @@
 
 public class MainWindow : Gtk.Window {
     static GLib.Settings settings;
-    static Gtk.Stack stack;
     static WebKit.WebView view;
     public MainWindow (Gtk.Application application) {
         Object (
@@ -40,24 +39,7 @@ public class MainWindow : Gtk.Window {
 
         var header = new Gtk.HeaderBar ();
         header.set_show_close_button (true);
-        var header_context = header.get_style_context ();
-        header_context.add_class (Gtk.STYLE_CLASS_FLAT);
         set_titlebar (header);
-
-        stack = new Gtk.Stack ();
-        stack.set_transition_type (Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
-
-
-        var back_button = new Gtk.Button.with_label ("Back");
-        back_button.get_style_context ().add_class (Granite.STYLE_CLASS_BACK_BUTTON);
-        back_button.clicked.connect (() => {
-            stack.set_visible_child_name ("scroller");
-        });
-        stack.notify["visible-child"].connect (() => {
-            stack_changed (back_button);
-        });
-        header.pack_start (back_button);
-
 
         var settings_popover = new Gtk.Popover (null);
         var settings_button = new Gtk.MenuButton ();
@@ -76,25 +58,21 @@ public class MainWindow : Gtk.Window {
         }
 
         var list = new PostList ();
-        stack.add_titled (list, "scroller", "HN");
-        stack.add_titled (view, "browser", "browser");
-        add (stack);
-        show_all ();
+        var scroller = new Gtk.ScrolledWindow (null, null);
+        scroller.hscrollbar_policy = Gtk.PolicyType.NEVER;
+        scroller.add (list);
 
-        back_button.visible = false;
+        var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        box.pack_start (scroller, false, false);
+        box.pack_start (view);
+        box.show_all ();
+        add (box);
+        show_all ();
 
     }
 
     public static void load_page (string uri) {
         view.load_uri (uri);
-        stack.set_visible_child_name ("browser");
     }
 
-    private void stack_changed (Gtk.Button button) {
-        if (stack.visible_child_name == "scroller") {
-            button.visible = false;
-        } else {
-            button.visible = true;
-        }
-    }
 }

@@ -41,7 +41,7 @@ public class MainWindow : Gtk.Window {
         header.set_show_close_button (true);
         set_titlebar (header);
 
-        var settings_popover = new Gtk.Popover (null);
+        var settings_popover = new SettingsPopover ();
 
         var settings_button = new Gtk.MenuButton ();
         settings_button.image = new Gtk.Image.from_icon_name ("open-menu", Gtk.IconSize.SMALL_TOOLBAR);

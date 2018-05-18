@@ -6,6 +6,7 @@ executable(
     'Services/Stories.vala',
     'Widgets/PostEntry.vala',
     'Widgets/PostList.vala',
+    'Widgets/SettingsPopover.vala',
     asresources,
     dependencies: [
     	dependency('granite'),

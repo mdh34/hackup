@@ -28,5 +28,10 @@
       <summary>Story list type</summary>
       <description>Stores the type of stories to get (top, best, new)</description>
     </key>
+    <key name="position" type="i">
+      <default>400</default>
+      <summary>Pane Position</summary>
+      <description>Stores the last position of the pane</description>
+    </key>
   </schema>
 </schemalist>

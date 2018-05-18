@@ -42,6 +42,7 @@ public class MainWindow : Gtk.Window {
         set_titlebar (header);
 
         var settings_popover = new Gtk.Popover (null);
+
         var settings_button = new Gtk.MenuButton ();
         settings_button.image = new Gtk.Image.from_icon_name ("open-menu", Gtk.IconSize.SMALL_TOOLBAR);
         settings_button.popover = settings_popover;
@@ -66,8 +67,21 @@ public class MainWindow : Gtk.Window {
         pane.wide_handle = true;
         pane.add1 (scroller);
         pane.add2 (view);
+        pane.set_position (400);
         add (pane);
         show_all ();
+
+        this.delete_event.connect (() => {
+            int current_x, current_y, width, height;
+            get_position (out current_x, out current_y);
+            get_size (out width, out height);
+            settings.set_int ("x", current_x);
+            settings.set_int ("y", current_y);
+            settings.set_int ("width", width);
+            settings.set_int ("height", height);
+            settings.set_int ("position", pane.get_position ());
+            return false;
+        });
 
     }
 

@@ -67,7 +67,7 @@ public class MainWindow : Gtk.Window {
         pane.wide_handle = true;
         pane.add1 (scroller);
         pane.add2 (view);
-        pane.set_position (400);
+        pane.set_position (settings.get_int ("position"));
         add (pane);
         show_all ();
 

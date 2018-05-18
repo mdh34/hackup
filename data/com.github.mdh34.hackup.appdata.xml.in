@@ -18,6 +18,14 @@
   <developer_name>Matt Harris</developer_name>
   <url type="homepage">https://github.com/mdh34/hackup</url>
   <url type="bugtracker">https://github.com/mdh34/hackup/issues</url>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/mdh34/quickDocs/master/data/images/screenshot-1.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/mdh34/quickDocs/master/data/images/screenshot-2.png</image>
+    </screenshot>
+  </screenshots>
   <custom>
     <value key="x-appcenter-color-primary">#FF6600</value>
     <value key="x-appcenter-color-primary-text">#FFFFFF</value>

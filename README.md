@@ -4,6 +4,7 @@
 Read Hacker News from the desktop
 
 ![Screenshot](https://raw.githubusercontent.com/mdh34/hackup/master/data/images/screenshot-1.png)
+
 ## Build Dependencies:
  - libgranite-dev
  - libgtk-3-dev

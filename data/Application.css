@@ -1,3 +1,8 @@
 @define-color colorPrimary #FF6600;
 @define-color colorAccent @colorPrimary;
 @define-color textColorPrimary #FFFFFF;
+
+*:selected {
+    background-color: #d4d4d4;
+    color: #000000;
+}

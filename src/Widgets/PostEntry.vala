@@ -28,7 +28,6 @@ public class PostEntry : Gtk.ListBoxRow {
         var author_label = new Gtk.Label (post.author);
         var author_context = author_label.get_style_context ();
         author_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
-        author_context.add_class (Granite.STYLE_CLASS_ACCENT);
 
         var comments_label = new Gtk.Label ("Comments: " + post.comments.to_string ());
         var comments_context = comments_label.get_style_context ();

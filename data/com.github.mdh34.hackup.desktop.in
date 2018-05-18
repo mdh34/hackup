@@ -2,7 +2,7 @@
 Name=HackUp
 GenericName=HackUp
 Comment=Read Hacker News from the desktop
-Categories=Development;
+Categories=Network;News;
 Exec=com.github.mdh34.hackup
 Icon=com.github.mdh34.hackup
 Terminal=false

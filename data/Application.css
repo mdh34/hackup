@@ -2,7 +2,12 @@
 @define-color colorAccent @colorPrimary;
 @define-color textColorPrimary #FFFFFF;
 
+.listboxpadding {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 *:selected {
-    background-color: #d4d4d4;
+    background-color: #fafafa;
     color: #000000;
 }

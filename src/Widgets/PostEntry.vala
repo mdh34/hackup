@@ -22,7 +22,6 @@
 public class PostEntry : Gtk.ListBoxRow {
     public Post post;
     public PostEntry (string id, Gtk.SizeGroup score_group, Gtk.SizeGroup title_group, Gtk.SizeGroup comments_group, Gtk.SizeGroup author_group) {
-
         post = new Post (id);
 
         var author_label = new Gtk.Label (post.author);
@@ -42,7 +41,8 @@ public class PostEntry : Gtk.ListBoxRow {
         var title_label = new Gtk.Label (post.title);
         title_label.get_style_context ().add_class ("h3");
         title_label.set_ellipsize (Pango.EllipsizeMode.END);
-        var comment_button = new Gtk.Button.from_icon_name ("edit");
+        var comment_button = new Gtk.Button.from_icon_name ("edit-symbolic");
+        comment_button.set_relief (Gtk.ReliefStyle.NONE);
         comment_button.clicked.connect (() => {
             MainWindow.load_page (post.comment_uri);
         });
@@ -67,6 +67,8 @@ public class PostEntry : Gtk.ListBoxRow {
         box.pack_start (title_label);
         box.pack_start (info_box,true, true);
         add (box);
+
+        get_style_context ().add_class ("listboxpadding");
     }
 
 }

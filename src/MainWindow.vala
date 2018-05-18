@@ -38,6 +38,7 @@ public class MainWindow : Gtk.Window {
         set_position (Gtk.WindowPosition.CENTER);
 
         var header = new Gtk.HeaderBar ();
+        header.get_style_context ().add_class ("default-decoration");
         header.set_show_close_button (true);
         set_titlebar (header);
 
@@ -65,7 +66,7 @@ public class MainWindow : Gtk.Window {
 
         var pane = new Gtk.Paned(Gtk.Orientation.HORIZONTAL);
         pane.wide_handle = true;
-        pane.add1 (scroller);
+        pane.pack1 (scroller, true, false);
         pane.add2 (view);
         pane.set_position (settings.get_int ("position"));
         add (pane);

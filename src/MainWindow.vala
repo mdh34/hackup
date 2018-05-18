@@ -62,11 +62,11 @@ public class MainWindow : Gtk.Window {
         scroller.hscrollbar_policy = Gtk.PolicyType.NEVER;
         scroller.add (list);
 
-        var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        box.pack_start (scroller, false, false);
-        box.pack_start (view);
-        box.show_all ();
-        add (box);
+        var pane = new Gtk.Paned(Gtk.Orientation.HORIZONTAL);
+        pane.wide_handle = true;
+        pane.add1 (scroller);
+        pane.add2 (view);
+        add (pane);
         show_all ();
 
     }

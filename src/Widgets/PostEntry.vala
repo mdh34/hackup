@@ -37,7 +37,7 @@ public class PostEntry : Gtk.ListBoxRow {
 
         var title_label = new Gtk.Label (post.title);
         title_label.get_style_context ().add_class ("h3");
-
+        title_label.set_ellipsize (Pango.EllipsizeMode.END);
         var comment_button = new Gtk.Button.from_icon_name ("edit");
         comment_button.clicked.connect (() => {
             MainWindow.load_page (post.comment_uri);

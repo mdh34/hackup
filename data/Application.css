@@ -1,2 +1,3 @@
 @define-color colorPrimary #FF6600;
+@define-color colorAccent @colorPrimary;
 @define-color textColorPrimary #FFFFFF;

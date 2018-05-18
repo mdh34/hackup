@@ -24,6 +24,7 @@ public class Post {
     public string comment_uri;
     public string story_uri;
     public string title;
+    public int64 comments;
     public int64 score;
 
     public Post (string item) {
@@ -47,6 +48,9 @@ public class Post {
             }
             if (root_object.has_member ("score")) {
                  score = root_object.get_int_member ("score");
+            }
+            if (root_object.has_member ("descendants")) {
+                comments = root_object.get_int_member ("descendants");
             }
             comment_uri = "https://news.ycombinator.com/item?id=" + item;
         } catch (Error e) {

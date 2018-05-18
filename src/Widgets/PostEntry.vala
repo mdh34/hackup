@@ -21,19 +21,24 @@
 
 public class PostEntry : Gtk.ListBoxRow {
     public Post post;
-    public PostEntry (string id, Gtk.SizeGroup author_group, Gtk.SizeGroup title_group) {
-        var grid = new Gtk.Grid ();
-        grid.row_spacing = 5;
+    public PostEntry (string id, Gtk.SizeGroup score_group, Gtk.SizeGroup title_group, Gtk.SizeGroup comments_group) {
 
         post = new Post (id);
 
         var author_label = new Gtk.Label (post.author);
-        author_label.set_halign (Gtk.Align.CENTER);
-        author_label.get_style_context ().add_class (Gtk.STYLE_CLASS_DIM_LABEL);
+        var author_context = author_label.get_style_context ();
+        author_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
+        author_context.add_class (Granite.STYLE_CLASS_ACCENT);
+
+        var comments_label = new Gtk.Label ("Comments: " + post.comments.to_string ());
+        var comments_context = comments_label.get_style_context ();
+        comments_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
+        comments_context.add_class (Granite.STYLE_CLASS_ACCENT);
 
         var score_label = new Gtk.Label ("Score: " + post.score.to_string ());
-        score_label.set_halign (Gtk.Align.START);
-        score_label.get_style_context ().add_class (Gtk.STYLE_CLASS_DIM_LABEL);
+        var score_context = score_label.get_style_context ();
+        score_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
+        score_context.add_class (Granite.STYLE_CLASS_ACCENT);
 
         var title_label = new Gtk.Label (post.title);
         title_label.get_style_context ().add_class ("h3");
@@ -49,12 +54,17 @@ public class PostEntry : Gtk.ListBoxRow {
         });
 
         title_group.add_widget (title_label);
-        author_group.add_widget (score_label);
+        score_group.add_widget (score_label);
+        comments_group.add_widget (comments_label);
 
+        var grid = new Gtk.Grid ();
+        grid.row_spacing = 5;
+        grid.column_spacing = 5;
         grid.attach (author_label, 0, 2, 1, 1);
         grid.attach (title_label, 0, 1, 1, 1);
         grid.attach (score_label, 1, 2, 1, 1);
-        grid.attach (comment_button, 2, 2, 1, 1);
+        grid.attach (comments_label, 2, 2, 1, 1);
+        grid.attach (comment_button, 3, 2, 1, 1);
         add (grid);
     }
 

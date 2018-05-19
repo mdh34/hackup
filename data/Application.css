@@ -3,12 +3,12 @@
 @define-color textColorPrimary #FFFFFF;
 
 .listbox {
-  padding: 5px;
-  border-bottom: 1px solid #abacae;
+    padding: 5px;
+    border-bottom: 1px solid #abacae;
 }
 
 .titlesize {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 *:selected {

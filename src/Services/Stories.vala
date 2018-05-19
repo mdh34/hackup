@@ -19,17 +19,21 @@
  * Authored by: Matt Harris <matth281@outlook.com>
  */
 namespace Stories {
-    public string[] get_posts (string type) {
+    public static async string[] get_posts (string type) {
         var uri = "https://hacker-news.firebaseio.com/v0/" + type + "stories.json?print=pretty";
         var message = new Soup.Message ("GET", uri);
         var session = new Soup.Session ();
-        session.send_message (message);
 
-        var data = (string) message.response_body.flatten ().data;
-        data = data.delimit ("[]", ' ');
-        data = data._strip ();
-        string [] array = data.split (", ");
+        string[] array = {};
+        session.queue_message (message, (session, msg) => {
+            var data = (string) message.response_body.flatten ().data;
+            data = data.delimit ("[]", ' ');
+            data = data._strip ();
+            array = data.split (", ");
+            Idle.add (get_posts.callback);
+        });
+
+        yield;
         return array;
-
     }
 }

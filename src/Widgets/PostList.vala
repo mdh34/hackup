@@ -20,25 +20,35 @@
  */
 
 public class PostList : Gtk.ListBox {
+    private Gtk.SizeGroup author_group;
+    private Gtk.SizeGroup title_group;
+    private Gtk.SizeGroup comments_group;
+    private Gtk.SizeGroup score_group;
+
     public PostList () {
         activate_on_single_click = true;
         set_selection_mode (Gtk.SelectionMode.NONE);
 
+        author_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.BOTH);
+        title_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.BOTH);
+        comments_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.BOTH);
+        score_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.BOTH);
+
+        row_selected.connect ((row) => {
+            MainWindow.load_page (((PostEntry) row).post.story_uri);
+        });
+
+        load.begin ();
+    }
+
+    private async void load () {
         var settings = new GLib.Settings ("com.github.mdh34.hackup");
         var type = settings.get_string ("listtype");
-        var top = Stories.get_posts (type);
-
-        var author_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.BOTH);
-        var title_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.BOTH);
-        var comments_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.BOTH);
-        var score_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.BOTH);
-
-        for (int i = 0; i < 40; i++) {
+        var top = yield Stories.get_posts (type);
+        for (int i = 0; i < int.min (top.length, 40); i++) {
             add (new PostEntry(top[i], score_group, title_group, comments_group, author_group));
         }
 
-        row_selected.connect ((row) => {
-             MainWindow.load_page (((PostEntry) row).post.story_uri);
-        });
+        show_all ();
     }
 }

@@ -64,6 +64,17 @@ public class MainWindow : Gtk.Window {
         scroller.hscrollbar_policy = Gtk.PolicyType.NEVER;
         scroller.add (list);
 
+        settings_popover.closed.connect (() => {
+            var list_sorting = settings.get_string ("listtype");
+            if (settings_popover.current_sort != list_sorting) {
+                var new_list = new PostList ();
+                scroller.remove (scroller.get_child ());
+                scroller.add (new_list);
+                settings_popover.current_sort = list_sorting;
+                show_all ();
+            }
+        });
+
         var pane = new Gtk.Paned(Gtk.Orientation.HORIZONTAL);
         pane.wide_handle = true;
         pane.pack1 (scroller, false, false);

@@ -37,20 +37,22 @@ public class Post {
             var parser = new Json.Parser ();
             parser.load_from_data ((string) message.response_body.flatten ().data, -1);
             var root_object = parser.get_root ().get_object ();
-            if (root_object.has_member ("by")) {
-                author = root_object.get_string_member ("by");
-            }
-            if (root_object.has_member ("title")) {
-                 title = root_object.get_string_member ("title");
-            }
-            if (root_object.has_member ("url")) {
-                 story_uri = root_object.get_string_member ("url");
-            }
-            if (root_object.has_member ("score")) {
-                 score = root_object.get_int_member ("score");
-            }
-            if (root_object.has_member ("descendants")) {
-                comments = root_object.get_int_member ("descendants");
+            if (root_object != null) {
+                if (root_object.has_member ("by")) {
+                    author = root_object.get_string_member ("by");
+                }
+                if (root_object.has_member ("title")) {
+                     title = root_object.get_string_member ("title");
+                }
+                if (root_object.has_member ("url")) {
+                     story_uri = root_object.get_string_member ("url");
+                }
+                if (root_object.has_member ("score")) {
+                     score = root_object.get_int_member ("score");
+                }
+                if (root_object.has_member ("descendants")) {
+                    comments = root_object.get_int_member ("descendants");
+                }
             }
             comment_uri = "https://news.ycombinator.com/item?id=" + item;
         } catch (Error e) {

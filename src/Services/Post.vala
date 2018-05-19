@@ -29,8 +29,6 @@ public class Post {
 
     private string item;
 
-    public delegate void LoadCallback ();
-
     static Soup.Session session;
 
     static construct {

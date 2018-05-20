@@ -1,0 +1,5 @@
+data/com.github.mdh34.hackup.appdata.xml.in
+data/com.github.mdh34.hackup.desktop.in
+src/MainWindow.vala
+src/Widgets/PostEntry.vala
+src/Widgets/SettingsPopover.vala

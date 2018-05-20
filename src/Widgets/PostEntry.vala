@@ -50,7 +50,7 @@ public class PostEntry : Gtk.ListBoxRow {
 
         var comment_button = new Gtk.Button.from_icon_name ("edit-symbolic");
         comment_button.set_relief (Gtk.ReliefStyle.NONE);
-        comment_button.set_tooltip_text ("View comments");
+        comment_button.set_tooltip_text (_("View comments"));
         comment_button.clicked.connect (() => {
             MainWindow.load_page (post.comment_uri);
         });
@@ -85,8 +85,8 @@ public class PostEntry : Gtk.ListBoxRow {
 
     private void update () {
         author_label.label = post.author;
-        comments_label.label = "Comments: " + post.comments.to_string ();
-        score_label.label = "Score: " + post.score.to_string ();
+        comments_label.label = _("Comments: ") + post.comments.to_string ();
+        score_label.label = _("Score: ") + post.score.to_string ();
         title_label.label = post.title;
     }
 }

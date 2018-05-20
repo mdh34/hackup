@@ -1,0 +1,80 @@
+# Tibetan translations for com.github.mdh34.hackup package.
+# Copyright (C) 2018 THE com.github.mdh34.hackup'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.mdh34.hackup package.
+# Automatically generated, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.mdh34.hackup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-05-20 11:42+0100\n"
+"PO-Revision-Date: 2018-05-20 11:38+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: bo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/com.github.mdh34.hackup.appdata.xml.in:7
+#: data/com.github.mdh34.hackup.desktop.in:3
+#: data/com.github.mdh34.hackup.desktop.in:4
+msgid "HackUp"
+msgstr ""
+
+#: data/com.github.mdh34.hackup.appdata.xml.in:8
+#: data/com.github.mdh34.hackup.desktop.in:5
+msgid "Read Hacker News from the desktop"
+msgstr ""
+
+#: data/com.github.mdh34.hackup.appdata.xml.in:11
+msgid "Read Hacker News stories and comments from the desktop"
+msgstr ""
+
+#: data/com.github.mdh34.hackup.appdata.xml.in:12
+msgid "Sort by top, new and best stories"
+msgstr ""
+
+#: data/com.github.mdh34.hackup.appdata.xml.in:18
+msgid "Matt Harris"
+msgstr ""
+
+#: data/com.github.mdh34.hackup.desktop.in:8
+msgid "com.github.mdh34.hackup"
+msgstr ""
+
+#: data/com.github.mdh34.hackup.desktop.in:11
+msgid "hn;news;hacker;hackup;"
+msgstr ""
+
+#: src/MainWindow.vala:50
+msgid "Settings"
+msgstr ""
+
+#: src/Widgets/PostEntry.vala:53
+msgid "View comments"
+msgstr ""
+
+#: src/Widgets/PostEntry.vala:88
+msgid "Comments: "
+msgstr ""
+
+#: src/Widgets/PostEntry.vala:89
+msgid "Score: "
+msgstr ""
+
+#: src/Widgets/SettingsPopover.vala:28
+msgid "Sort stories by:"
+msgstr ""
+
+#: src/Widgets/SettingsPopover.vala:29
+msgid "Top"
+msgstr ""
+
+#: src/Widgets/SettingsPopover.vala:33
+msgid "Best"
+msgstr ""
+
+#: src/Widgets/SettingsPopover.vala:37
+msgid "New"
+msgstr ""

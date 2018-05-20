@@ -25,16 +25,16 @@ public class SettingsPopover : Gtk.Popover {
         var settings = new GLib.Settings ("com.github.mdh34.hackup");
         current_sort = settings.get_string ("listtype");
 
-        var settings_label = new Gtk.Label ("Sort stories by:");
-        var top_radio = new Gtk.RadioButton.with_label (null, "Top");
+        var settings_label = new Gtk.Label (_("Sort stories by:"));
+        var top_radio = new Gtk.RadioButton.with_label (null, _("Top"));
         top_radio.toggled.connect (() => {
             toggled ("top");
         });
-        var best_radio = new Gtk.RadioButton.with_label_from_widget (top_radio, "Best");
+        var best_radio = new Gtk.RadioButton.with_label_from_widget (top_radio, _("Best"));
         best_radio.toggled.connect (() => {
             toggled ("best");
         });
-        var new_radio = new Gtk.RadioButton.with_label_from_widget (top_radio, "New");
+        var new_radio = new Gtk.RadioButton.with_label_from_widget (top_radio, _("New"));
         new_radio.toggled.connect (() => {
             toggled ("new");
         });

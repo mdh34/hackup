@@ -50,6 +50,7 @@ public class PostEntry : Gtk.ListBoxRow {
 
         var comment_button = new Gtk.Button.from_icon_name ("edit-symbolic");
         comment_button.set_relief (Gtk.ReliefStyle.NONE);
+        comment_button.set_tooltip_text ("View comments");
         comment_button.clicked.connect (() => {
             MainWindow.load_page (post.comment_uri);
         });

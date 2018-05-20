@@ -47,6 +47,7 @@ public class MainWindow : Gtk.Window {
         var settings_button = new Gtk.MenuButton ();
         settings_button.image = new Gtk.Image.from_icon_name ("open-menu", Gtk.IconSize.SMALL_TOOLBAR);
         settings_button.popover = settings_popover;
+        settings_button.set_tooltip_text ("Settings");
         header.pack_end (settings_button);
 
         var window_width = settings.get_int ("width");

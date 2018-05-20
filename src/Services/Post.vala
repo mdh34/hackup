@@ -20,35 +20,54 @@
  */
 
 public class Post {
-    public string author;
-    public string comment_uri;
-    public string story_uri;
-    public string title;
+    public string? author;
+    public string? comment_uri;
+    public string? story_uri;
+    public string? title;
     public int64 comments;
     public int64 score;
 
+    private string item;
+
+    static Soup.Session session;
+
+    static construct {
+        session = new Soup.Session ();
+    }
+
     public Post (string item) {
+        this.item = item;
+    }
+
+    public async void load () {
         var uri = "https://hacker-news.firebaseio.com/v0/item/" + item + ".json?print=pretty";
         var message = new Soup.Message ("GET", uri);
-        var session = new Soup.Session ();
-        session.send_message (message);
 
+        session.queue_message (message, (session, msg) => {
+            parse_response ((string)(msg.response_body.flatten ().data));
+            Idle.add (load.callback);
+        });
+
+        yield;
+    }
+
+    private void parse_response (string response) {
         try {
             var parser = new Json.Parser ();
-            parser.load_from_data ((string) message.response_body.flatten ().data, -1);
+            parser.load_from_data (response, -1);
             var root_object = parser.get_root ().get_object ();
             if (root_object != null) {
                 if (root_object.has_member ("by")) {
                     author = root_object.get_string_member ("by");
                 }
                 if (root_object.has_member ("title")) {
-                     title = root_object.get_string_member ("title");
+                    title = root_object.get_string_member ("title");
                 }
                 if (root_object.has_member ("url")) {
-                     story_uri = root_object.get_string_member ("url");
+                    story_uri = root_object.get_string_member ("url");
                 }
                 if (root_object.has_member ("score")) {
-                     score = root_object.get_int_member ("score");
+                    score = root_object.get_int_member ("score");
                 }
                 if (root_object.has_member ("descendants")) {
                     comments = root_object.get_int_member ("descendants");
@@ -58,6 +77,5 @@ public class Post {
         } catch (Error e) {
             warning ("Error parsing data: %s", e.message);
         }
-
     }
 }

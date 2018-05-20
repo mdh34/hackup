@@ -21,24 +21,28 @@
 
 public class PostEntry : Gtk.ListBoxRow {
     public Post post;
-    public PostEntry (string id, Gtk.SizeGroup score_group, Gtk.SizeGroup title_group, Gtk.SizeGroup comments_group, Gtk.SizeGroup author_group) {
-        post = new Post (id);
 
-        var author_label = new Gtk.Label (post.author);
+    private Gtk.Label author_label;
+    private Gtk.Label comments_label;
+    private Gtk.Label score_label;
+    private Gtk.Label title_label;
+
+    public PostEntry (string id, Gtk.SizeGroup score_group, Gtk.SizeGroup title_group, Gtk.SizeGroup comments_group, Gtk.SizeGroup author_group) {
+        author_label = new Gtk.Label (null);
         var author_context = author_label.get_style_context ();
         author_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
 
-        var comments_label = new Gtk.Label ("Comments: " + post.comments.to_string ());
+        comments_label = new Gtk.Label (null);
         var comments_context = comments_label.get_style_context ();
         comments_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
         comments_context.add_class (Granite.STYLE_CLASS_ACCENT);
 
-        var score_label = new Gtk.Label ("Score: " + post.score.to_string ());
+        score_label = new Gtk.Label (null);
         var score_context = score_label.get_style_context ();
         score_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
         score_context.add_class (Granite.STYLE_CLASS_ACCENT);
 
-        var title_label = new Gtk.Label (post.title);
+        title_label = new Gtk.Label (null);
         title_label.get_style_context ().add_class ("h4");
         title_label.get_style_context ().add_class ("titlesize");
         title_label.set_ellipsize (Pango.EllipsizeMode.END);
@@ -50,9 +54,10 @@ public class PostEntry : Gtk.ListBoxRow {
             MainWindow.load_page (post.comment_uri);
         });
 
-
         this.activate.connect (() => {
-            MainWindow.load_page (post.story_uri);
+            if (post.story_uri != null) {
+                MainWindow.load_page (post.story_uri);
+            }
         });
 
         title_group.add_widget (title_label);
@@ -72,6 +77,15 @@ public class PostEntry : Gtk.ListBoxRow {
         add (box);
 
         get_style_context ().add_class ("listbox");
+
+        post = new Post (id);
+        post.load.begin (() => update ());
     }
 
+    private void update () {
+        author_label.label = post.author;
+        comments_label.label = "Comments: " + post.comments.to_string ();
+        score_label.label = "Score: " + post.score.to_string ();
+        title_label.label = post.title;
+    }
 }

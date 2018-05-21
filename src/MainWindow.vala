@@ -77,7 +77,6 @@ public class MainWindow : Gtk.Window {
         });
 
         var pane = new Gtk.Paned(Gtk.Orientation.HORIZONTAL);
-        pane.wide_handle = true;
         pane.pack1 (scroller, false, false);
         pane.add2 (view);
         pane.set_position (settings.get_int ("position"));

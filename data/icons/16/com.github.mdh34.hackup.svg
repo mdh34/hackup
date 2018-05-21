@@ -24,17 +24,16 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="960"
-     inkscape:window-height="1013"
+     inkscape:window-height="1017"
      id="namedview23"
      showgrid="true"
-     inkscape:zoom="32"
-     inkscape:cx="8.4037797"
-     inkscape:cy="9.8320694"
+     inkscape:zoom="22.627417"
+     inkscape:cx="8.6218473"
+     inkscape:cy="6.3440492"
      inkscape:window-x="960"
-     inkscape:window-y="34"
+     inkscape:window-y="30"
      inkscape:window-maximized="0"
-     inkscape:current-layer="svg4372"
-     inkscape:snap-midpoints="true">
+     inkscape:current-layer="svg4372">
     <inkscape:grid
        type="xygrid"
        id="grid4151"
@@ -52,6 +51,20 @@
   </sodipodi:namedview>
   <defs
      id="defs4374">
+    <marker
+       inkscape:stockid="EmptyTriangleOutL"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="EmptyTriangleOutL"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path991"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;fill:#ffffff;stroke:#ffffff;stroke-width:1pt;stroke-opacity:1"
+         transform="scale(0.8) translate(-6,0)" />
+    </marker>
     <linearGradient
        x1="23.99999"
        y1="4.999989"
@@ -124,7 +137,7 @@
   </metadata>
   <g
      id="layer1"
-     transform="translate(0,2.8610229e-6)">
+     transform="translate(-1.4305115e-6,1.5497208e-6)">
     <rect
        width="13.000003"
        height="13.000003"
@@ -133,7 +146,7 @@
        x="1.5"
        y="1.499997"
        id="rect5505-21-2"
-       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#ff6600;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.99999994;marker:none;enable-background:accumulate" />
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#ff6600;fill-opacity:0.96862745;fill-rule:nonzero;stroke:none;stroke-width:0.99999994;marker:none;enable-background:accumulate" />
     <rect
        width="11"
        height="11"
@@ -149,28 +162,11 @@
        x="1.5"
        y="1.499997"
        id="rect5505-21-2-8"
-       style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:0.5;fill:none;stroke:#ffcba9;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.8;marker:none;enable-background:accumulate" />
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:0.5;fill:none;stroke:#ff6600;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.96862745;marker:none;enable-background:accumulate" />
   </g>
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;line-height:1.25;font-family:raleway;-inkscape-font-specification:raleway;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-     x="2.34375"
-     y="10.96875"
-     id="text831"><tspan
-       sodipodi:role="line"
-       id="tspan829"
-       x="2.34375"
-       y="10.96875"
-       style="font-size:8px;fill:#fafafa">H</tspan></text>
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;line-height:1.25;font-family:raleway;-inkscape-font-specification:raleway;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-     x="7.59375"
-     y="10.9375"
-     id="text835"><tspan
-       sodipodi:role="line"
-       id="tspan833"
-       x="7.59375"
-       y="10.9375"
-       style="fill:#fafafa">U</tspan></text>
+  <path
+     style="fill:none;stroke:#ffffff;stroke-width:0.67015058;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#EmptyTriangleOutL)"
+     d="M 8,13.5 V 3"
+     id="path829"
+     inkscape:connector-curvature="0" />
 </svg>

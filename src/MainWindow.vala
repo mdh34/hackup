@@ -43,7 +43,7 @@ public class MainWindow : Gtk.Window {
         set_titlebar (header);
 
         if (!check_online ()) {
-            var offline_view = new Granite.Widgets.AlertView ("Unable to reach Hacker News", "Please connect to the internet to use HackUp", "applications-internet");
+            var offline_view = new Granite.Widgets.AlertView (_("Unable to reach Hacker News"), _("Please connect to the internet to use HackUp"), "applications-internet");
             add (offline_view);
             show_all ();
             return;

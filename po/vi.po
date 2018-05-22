@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.mdh34.hackup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-20 11:42+0100\n"
+"POT-Creation-Date: 2018-05-22 18:41+0100\n"
 "PO-Revision-Date: 2018-05-20 11:38+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -48,19 +48,23 @@ msgstr ""
 msgid "hn;news;hacker;hackup;"
 msgstr ""
 
-#: src/MainWindow.vala:50
+#: src/MainWindow.vala:46
+msgid "Unable to reach Hacker News"
+msgstr ""
+
+#: src/MainWindow.vala:46
+msgid "Please connect to the internet to use HackUp"
+msgstr ""
+
+#: src/MainWindow.vala:56
 msgid "Settings"
 msgstr ""
 
-#: src/Widgets/PostEntry.vala:53
-msgid "View comments"
-msgstr ""
-
-#: src/Widgets/PostEntry.vala:88
+#: src/Widgets/PostEntry.vala:87
 msgid "Comments: "
 msgstr ""
 
-#: src/Widgets/PostEntry.vala:89
+#: src/Widgets/PostEntry.vala:88
 msgid "Score: "
 msgstr ""
 

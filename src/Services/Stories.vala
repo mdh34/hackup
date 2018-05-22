@@ -39,7 +39,6 @@ namespace Stories {
         });
 
         if (try_again) {
-            warning ("Trying again");
             return yield Stories.get_posts (type);
         }
 

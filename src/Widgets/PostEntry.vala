@@ -33,6 +33,12 @@ public class PostEntry : Gtk.ListBoxRow {
         author_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
 
         comments_label = new Gtk.Label (null);
+        comments_label.set_use_markup (true);
+        comments_label.activate_link.connect ((uri) => {
+            MainWindow.load_page (uri);
+            return true;
+        });
+
         var comments_context = comments_label.get_style_context ();
         comments_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
         comments_context.add_class (Granite.STYLE_CLASS_ACCENT);
@@ -47,13 +53,6 @@ public class PostEntry : Gtk.ListBoxRow {
         title_label.get_style_context ().add_class ("titlesize");
         title_label.set_ellipsize (Pango.EllipsizeMode.END);
         title_label.xalign = 0;
-
-        var comment_button = new Gtk.Button.from_icon_name ("edit-symbolic");
-        comment_button.set_relief (Gtk.ReliefStyle.NONE);
-        comment_button.set_tooltip_text (_("View comments"));
-        comment_button.clicked.connect (() => {
-            MainWindow.load_page (post.comment_uri);
-        });
 
         this.activate.connect (() => {
             if (post.story_uri != null) {
@@ -70,7 +69,6 @@ public class PostEntry : Gtk.ListBoxRow {
         info_box.pack_start (author_label);
         info_box.pack_start (score_label);
         info_box.pack_start (comments_label);
-        info_box.pack_start (comment_button);
 
         var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
         box.pack_start (title_label);
@@ -85,7 +83,8 @@ public class PostEntry : Gtk.ListBoxRow {
 
     private void update () {
         author_label.label = post.author;
-        comments_label.label = _("Comments: ") + post.comments.to_string ();
+        var comments_html = "<a href=\"" + post.comment_uri + "\">";
+        comments_label.label = comments_html + _("Comments: ") + post.comments.to_string () + "</a>";
         score_label.label = _("Score: ") + post.score.to_string ();
         title_label.label = post.title;
     }

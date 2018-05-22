@@ -16,6 +16,10 @@
     color: #000000;
 }
 
+link {
+    color: @colorAccent;
+}
+
 paned.horizontal > separator {
     background-image:
         linear-gradient(

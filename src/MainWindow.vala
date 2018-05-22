@@ -68,9 +68,8 @@ public class MainWindow : Gtk.Window {
         settings_popover.closed.connect (() => {
             var list_sorting = settings.get_string ("listtype");
             if (settings_popover.current_sort != list_sorting) {
-                var new_list = new PostList ();
                 scroller.remove (scroller.get_child ());
-                scroller.add (new_list);
+                scroller.add (new PostList ());
                 settings_popover.current_sort = list_sorting;
                 show_all ();
             }

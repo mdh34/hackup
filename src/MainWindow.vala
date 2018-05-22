@@ -42,6 +42,12 @@ public class MainWindow : Gtk.Window {
         header.set_show_close_button (true);
         set_titlebar (header);
 
+        if (!check_online ()) {
+            var offline_view = new Granite.Widgets.AlertView ("Unable to reach Hacker News", "Please connect to the internet to use HackUp", "applications-internet");
+            add (offline_view);
+            show_all ();
+            return;
+        }
         var settings_popover = new SettingsPopover ();
 
         var settings_button = new Gtk.MenuButton ();
@@ -103,6 +109,17 @@ public class MainWindow : Gtk.Window {
 
     public static void load_page (string uri) {
         view.load_uri (uri);
+    }
+
+    public bool check_online () {
+        var host = "news.ycombinator.com";
+        try {
+            var resolve = Resolver.get_default ();
+            resolve.lookup_by_name (host, null);
+            return true;
+        } catch {
+            return false;
+        }
     }
 
 }

@@ -40,7 +40,7 @@ public class Post {
     }
 
     public async void load () {
-        var uri = "https://hacker-news.firebaseio.com/v0/item/" + item + ".json?print=pretty";
+        var uri = "https://hacker-news.firebaseio.com/v0/item/" + item + ".json";
         var message = new Soup.Message ("GET", uri);
 
         session.queue_message (message, (session, msg) => {

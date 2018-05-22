@@ -20,7 +20,7 @@
  */
 namespace Stories {
     public static async string[] get_posts (string type) {
-        var uri = "https://hacker-news.firebaseio.com/v0/" + type + "stories.json?print=pretty";
+        var uri = "https://hacker-news.firebaseio.com/v0/" + type + "stories.json";
         var message = new Soup.Message ("GET", uri);
         var session = new Soup.Session ();
 
@@ -29,7 +29,7 @@ namespace Stories {
             var data = (string) message.response_body.flatten ().data;
             data = data.delimit ("[]", ' ');
             data = data._strip ();
-            array = data.split (", ");
+            array = data.split (",");
             Idle.add (get_posts.callback);
         });
 

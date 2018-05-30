@@ -2,16 +2,16 @@
 @define-color colorAccent @colorPrimary;
 @define-color textColorPrimary #FFFFFF;
 
-.listbox {
-    padding: 5px;
-    border-bottom: 1px solid #abacae;
-}
-
 .titlesize {
     font-size: 14px;
 }
 
-*:selected {
+row {
+    padding: 5px;
+    border-bottom: 1px solid #abacae;
+}
+
+row:selected {
     background-color: #fafafa;
     color: #000000;
 }

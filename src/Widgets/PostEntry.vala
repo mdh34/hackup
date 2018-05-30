@@ -75,8 +75,6 @@ public class PostEntry : Gtk.ListBoxRow {
         box.pack_start (info_box,true, true);
         add (box);
 
-        get_style_context ().add_class ("listbox");
-
         post = new Post (id);
         post.load.begin (() => update ());
     }

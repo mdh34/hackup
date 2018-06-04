@@ -12,8 +12,11 @@ row {
 }
 
 row:selected {
-    background-color: #fafafa;
-    color: #000000;
+    background-color: #e6e6e6;
+}
+
+row:selected label {
+    color: @theme_text_color;
 }
 
 link {

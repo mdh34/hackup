@@ -33,5 +33,10 @@
       <summary>Pane Position</summary>
       <description>Stores the last position of the pane</description>
     </key>
+    <key name="cookies" type="b">
+      <default>false</default>
+      <summary>cookies storage</summary>
+      <description>Stores whether to keep cookies</description>
+    </key>
   </schema>
 </schemalist>

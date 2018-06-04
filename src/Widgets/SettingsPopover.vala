@@ -22,6 +22,7 @@
 public class SettingsPopover : Gtk.Popover {
     public string current_sort;
     public SettingsPopover () {
+        var window = get_ancestor (typeof (MainWindow));
         var settings = new GLib.Settings ("com.github.mdh34.hackup");
         current_sort = settings.get_string ("listtype");
 
@@ -51,8 +52,21 @@ public class SettingsPopover : Gtk.Popover {
                 break;
         }
 
-        var settings_box = new Gtk.Box (Gtk.Orientation.VERTICAL,5);
+        var cookies_switch = new Gtk.Switch ();
+        settings.bind ("cookies", cookies_switch, "active", SettingsBindFlags.DEFAULT);
+        cookies_switch.activate.connect (() => {
+            ((MainWindow) window).setup_cookies (cookies_switch.active);
+        });
+
+        var cookies_label = new Gtk.Label (_("Cookies"));
+        var switch_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
+        switch_box.pack_start (cookies_label);
+        switch_box.pack_start (cookies_switch);
+
+        var settings_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
         settings_box.border_width = 10;
+        settings_box.pack_start (switch_box);
+        settings_box.pack_start (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
         settings_box.pack_start (settings_label);
         settings_box.pack_start (top_radio);
         settings_box.pack_start (best_radio);

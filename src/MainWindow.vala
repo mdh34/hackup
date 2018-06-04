@@ -84,6 +84,8 @@ public class MainWindow : Gtk.Window {
             }
         });
 
+        setup_cookies (settings.get_boolean ("cookies"));
+
         var pane = new Gtk.Paned(Gtk.Orientation.HORIZONTAL);
         pane.pack1 (scroller, false, false);
         pane.add2 (view);
@@ -122,4 +124,25 @@ public class MainWindow : Gtk.Window {
         }
     }
 
+    public void setup_cookies (bool status) {
+        var context = view.get_context ();
+        var cookies = context.get_cookie_manager ();
+        if (status) {
+            string folder = Path.build_filename (Environment.get_user_data_dir (), "com.github.mdh34.hackup");
+            string path = Path.build_filename (folder, "cookies");
+
+            if (!GLib.FileUtils.test (folder, GLib.FileTest.IS_DIR)) {
+                var file = File.new_for_path (folder);
+                try {
+                    file.make_directory ();
+                } catch (Error e) {
+                    warning ("Unable to create config directory: %s", e.message);
+                }
+            }
+            cookies.set_accept_policy (WebKit.CookieAcceptPolicy.ALWAYS);
+            cookies.set_persistent_storage (path, WebKit.CookiePersistentStorage.SQLITE);
+        } else {
+            cookies.set_accept_policy (WebKit.CookieAcceptPolicy.NEVER);
+        }
+    }
 }

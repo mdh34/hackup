@@ -42,19 +42,11 @@ public class Post {
     public async void load () {
         var uri = "https://hacker-news.firebaseio.com/v0/item/" + item + ".json";
         var message = new Soup.Message ("GET", uri);
-        bool try_again = false;
 
         session.queue_message (message, (session, msg) => {
-            if (message.status_code != 200) {
-                warning ("Error getting post information, trying again...");
-                try_again = true;
-            }
             parse_response ((string)(msg.response_body.flatten ().data));
             Idle.add (load.callback);
         });
-        if (try_again == true) {
-            load.begin (() => load.callback);
-        }
         yield;
     }
 

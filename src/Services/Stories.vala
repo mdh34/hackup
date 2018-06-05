@@ -25,22 +25,13 @@ namespace Stories {
         var session = new Soup.Session ();
 
         string[] array = {};
-        bool try_again = false;
         session.queue_message (message, (session, msg) => {
-            if (message.status_code != 200) {
-                warning ("Error getting stories, trying again...");
-                try_again = true;
-            }
             var data = (string) message.response_body.flatten ().data;
             data = data.delimit ("[]", ' ');
             data = data._strip ();
             array = data.split (",");
             Idle.add (get_posts.callback);
         });
-
-        if (try_again) {
-            return yield Stories.get_posts (type);
-        }
 
         yield;
         return array;

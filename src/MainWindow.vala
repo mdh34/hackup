@@ -51,7 +51,7 @@ public class MainWindow : Gtk.Window {
         var settings_popover = new SettingsPopover ();
 
         var settings_button = new Gtk.MenuButton ();
-        settings_button.image = new Gtk.Image.from_icon_name ("open-menu", Gtk.IconSize.SMALL_TOOLBAR);
+        settings_button.image = new Gtk.Image.from_icon_name ("open-menu-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
         settings_button.popover = settings_popover;
         settings_button.set_tooltip_text (_("Settings"));
         header.pack_end (settings_button);

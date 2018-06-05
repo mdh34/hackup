@@ -21,7 +21,7 @@
 
 public class MainWindow : Gtk.Window {
     static GLib.Settings settings;
-    static WebKit.WebView view;
+    static View view;
     public MainWindow (Gtk.Application application) {
         Object (
             application: application,
@@ -32,7 +32,7 @@ public class MainWindow : Gtk.Window {
 
     static construct {
         settings = new GLib.Settings ("com.github.mdh34.hackup");
-        view = new WebKit.WebView ();
+        view = new View ();
     }
     construct {
         set_position (Gtk.WindowPosition.CENTER);
@@ -48,7 +48,7 @@ public class MainWindow : Gtk.Window {
             show_all ();
             return;
         }
-        var settings_popover = new SettingsPopover ();
+        var settings_popover = new SettingsPopover (view);
 
         var settings_button = new Gtk.MenuButton ();
         settings_button.image = new Gtk.Image.from_icon_name ("open-menu-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
@@ -84,7 +84,7 @@ public class MainWindow : Gtk.Window {
             }
         });
 
-        setup_cookies (settings.get_boolean ("cookies"));
+        view.setup_cookies (settings.get_boolean ("cookies"));
 
         var pane = new Gtk.Paned(Gtk.Orientation.HORIZONTAL);
         pane.pack1 (scroller, false, false);
@@ -121,28 +121,6 @@ public class MainWindow : Gtk.Window {
             return true;
         } catch {
             return false;
-        }
-    }
-
-    public void setup_cookies (bool status) {
-        var context = view.get_context ();
-        var cookies = context.get_cookie_manager ();
-        if (status) {
-            string folder = Path.build_filename (Environment.get_user_data_dir (), "com.github.mdh34.hackup");
-            string path = Path.build_filename (folder, "cookies");
-
-            if (!GLib.FileUtils.test (folder, GLib.FileTest.IS_DIR)) {
-                var file = File.new_for_path (folder);
-                try {
-                    file.make_directory ();
-                } catch (Error e) {
-                    warning ("Unable to create config directory: %s", e.message);
-                }
-            }
-            cookies.set_accept_policy (WebKit.CookieAcceptPolicy.ALWAYS);
-            cookies.set_persistent_storage (path, WebKit.CookiePersistentStorage.SQLITE);
-        } else {
-            cookies.set_accept_policy (WebKit.CookieAcceptPolicy.NEVER);
         }
     }
 }

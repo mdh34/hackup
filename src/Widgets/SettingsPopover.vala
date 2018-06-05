@@ -18,11 +18,9 @@
  *
  * Authored by: Matt Harris <matth281@outlook.com>
  */
-
 public class SettingsPopover : Gtk.Popover {
     public string current_sort;
-    public SettingsPopover () {
-        var window = get_ancestor (typeof (MainWindow));
+    public SettingsPopover (View view) {
         var settings = new GLib.Settings ("com.github.mdh34.hackup");
         current_sort = settings.get_string ("listtype");
 
@@ -54,8 +52,8 @@ public class SettingsPopover : Gtk.Popover {
 
         var cookies_switch = new Gtk.Switch ();
         settings.bind ("cookies", cookies_switch, "active", SettingsBindFlags.DEFAULT);
-        cookies_switch.activate.connect (() => {
-            ((MainWindow) window).setup_cookies (cookies_switch.active);
+        cookies_switch.notify["active"].connect (() => {
+            view.setup_cookies (cookies_switch.active);
         });
 
         var cookies_label = new Gtk.Label (_("Cookies"));

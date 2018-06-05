@@ -52,9 +52,6 @@ public class SettingsPopover : Gtk.Popover {
 
         var cookies_switch = new Gtk.Switch ();
         settings.bind ("cookies", cookies_switch, "active", SettingsBindFlags.DEFAULT);
-        cookies_switch.notify["active"].connect (() => {
-            view.setup_cookies (cookies_switch.active);
-        });
 
         var cookies_label = new Gtk.Label (_("Cookies"));
         var switch_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
@@ -71,6 +68,10 @@ public class SettingsPopover : Gtk.Popover {
         settings_box.pack_start (new_radio);
         settings_box.show_all ();
         add (settings_box);
+
+        this.closed.connect (() => {
+            view.setup_cookies (cookies_switch.active);
+        });
     }
 
     private void toggled (string new_sort) {

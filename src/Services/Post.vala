@@ -39,7 +39,7 @@ public class Post {
         this.item = item;
     }
 
-    public async void load () {
+    public async void load () throws GLib.Error {
         var uri = "https://hacker-news.firebaseio.com/v0/item/" + item + ".json";
         var message = new Soup.Message ("GET", uri);
 
@@ -47,7 +47,12 @@ public class Post {
             parse_response ((string)(msg.response_body.flatten ().data));
             Idle.add (load.callback);
         });
+
         yield;
+
+        if (message.status_code != 200) {
+            throw new GLib.IOError.FAILED (message.reason_phrase);
+        }
     }
 
     private void parse_response (string response) {

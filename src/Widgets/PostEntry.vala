@@ -76,7 +76,15 @@ public class PostEntry : Gtk.ListBoxRow {
         add (box);
 
         post = new Post (id);
-        post.load.begin (() => update ());
+        post.load.begin ((obj, res) => {
+            try {
+                post.load.end (res);
+            } catch (Error e) {
+                warning ("Error getting post: %s, trying again...", e.message);
+                post.load.begin (() => update ());
+            }
+            update ();
+        });
     }
 
     private void update () {

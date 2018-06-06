@@ -44,7 +44,15 @@ public class PostList : Gtk.ListBox {
     private async void load () {
         var settings = new GLib.Settings ("com.github.mdh34.hackup");
         var type = settings.get_string ("listtype");
-        var top = yield Stories.get_posts (type);
+        string[] top = {};
+
+        try {
+            top = yield Stories.get_posts (type);
+        } catch (Error e) {
+            warning ("Error getting stories: %s, trying again...", e.message);
+            top = yield Stories.get_posts (type);
+        }
+
         for (int i = 0; i < int.min (top.length, 40); i++) {
             add (new PostEntry(top[i], score_group, title_group, comments_group, author_group));
         }

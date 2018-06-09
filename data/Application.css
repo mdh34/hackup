@@ -1,6 +1,4 @@
-@define-color colorPrimary #FF6600;
-@define-color colorAccent @colorPrimary;
-@define-color textColorPrimary #FFFFFF;
+@define-color colorAccent #FF6600;
 
 .titlesize {
     font-size: 14px;

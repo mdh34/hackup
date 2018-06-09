@@ -39,6 +39,7 @@ public class MainWindow : Gtk.Window {
 
         var header = new Gtk.HeaderBar ();
         header.get_style_context ().add_class ("default-decoration");
+        header.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
         header.set_show_close_button (true);
         set_titlebar (header);
 

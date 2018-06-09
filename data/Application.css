@@ -19,6 +19,10 @@ row:selected label {
     color: @theme_text_color;
 }
 
+row:selected .accent {
+    color: @colorAccent;
+}
+
 link {
     color: @colorAccent;
 }

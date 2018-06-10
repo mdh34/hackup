@@ -27,6 +27,11 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.0.2" date="2018-06-10">
+      <description>
+        <p>UI tweaks</p>
+      </description>
+    </release>
     <release version="1.0.1" date="2018-06-07">
       <description>
         <p>Initial release</p>

@@ -1,9 +1,11 @@
 @define-color colorAccent #FF6600;
 
+/* Title label styling */
 .titlesize {
     font-size: 14px;
 }
 
+/* ListBoxRow styling */
 row {
     padding: 5px;
     border-bottom: 1px solid #abacae;
@@ -11,6 +13,15 @@ row {
 
 row:selected {
     background-color: #e6e6e6;
+}
+
+/* Label styling */
+.accent {
+  color: @colorAccent;
+}
+
+link {
+    color: @colorAccent;
 }
 
 row:selected label {
@@ -21,9 +32,7 @@ row:selected .accent {
     color: @colorAccent;
 }
 
-link {
-    color: @colorAccent;
-}
+/* Workaround for GTK Paned bug */
 
 paned.horizontal > separator {
     background-image:

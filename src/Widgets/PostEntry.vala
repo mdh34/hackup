@@ -93,5 +93,6 @@ public class PostEntry : Gtk.ListBoxRow {
         comments_label.label = comments_html + _("Comments: ") + post.comments.to_string () + "</a>";
         score_label.label = _("Score: ") + post.score.to_string ();
         title_label.label = post.title;
+        title_label.set_tooltip_text (title_label.label);
     }
 }

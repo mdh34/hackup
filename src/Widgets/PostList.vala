@@ -42,8 +42,7 @@ public class PostList : Gtk.ListBox {
     }
 
     private async void load () {
-        var settings = new GLib.Settings ("com.github.mdh34.hackup");
-        var type = settings.get_string ("listtype");
+        var type = HackUp.settings.get_string ("listtype");
         string[] top = {};
 
         try {

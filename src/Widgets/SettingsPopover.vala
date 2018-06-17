@@ -21,9 +21,7 @@
 public class SettingsPopover : Gtk.Popover {
     public string current_sort;
     public SettingsPopover (View view) {
-        var settings = new GLib.Settings ("com.github.mdh34.hackup");
-        current_sort = settings.get_string ("listtype");
-
+        current_sort = HackUp.settings.get_string ("listtype");
         var settings_label = new Gtk.Label (_("Sort stories by:"));
         var top_radio = new Gtk.RadioButton.with_label (null, _("Top"));
         top_radio.toggled.connect (() => {
@@ -51,7 +49,7 @@ public class SettingsPopover : Gtk.Popover {
         }
 
         var cookies_switch = new Gtk.Switch ();
-        settings.bind ("cookies", cookies_switch, "active", SettingsBindFlags.DEFAULT);
+        HackUp.settings.bind ("cookies", cookies_switch, "active", SettingsBindFlags.DEFAULT);
 
         var cookies_label = new Gtk.Label (_("Cookies"));
         var switch_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
@@ -75,7 +73,6 @@ public class SettingsPopover : Gtk.Popover {
     }
 
     private void toggled (string new_sort) {
-        var settings = new GLib.Settings ("com.github.mdh34.hackup");
-        settings.set_string ("listtype", new_sort);
+        HackUp.settings.set_string ("listtype", new_sort);
     }
 }

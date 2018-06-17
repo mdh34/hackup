@@ -19,8 +19,13 @@
  * Authored by: Matt Harris <matth281@outlook.com>
  */
 
-public class Hackup : Gtk.Application {
-    public Hackup () {
+public class HackUp : Gtk.Application {
+    public static GLib.Settings settings;
+    static construct {
+        settings = new GLib.Settings ("com.github.mdh34.hackup");
+    }
+
+    public HackUp () {
         Object (
             application_id: "com.github.mdh34.hackup",
             flags: ApplicationFlags.FLAGS_NONE
@@ -42,7 +47,7 @@ public class Hackup : Gtk.Application {
     }
 
     public static int main (string[] args) {
-        var app = new Hackup ();
+        var app = new HackUp ();
         return app.run (args);
     }
 }

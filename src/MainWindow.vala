@@ -20,7 +20,6 @@
  */
 
 public class MainWindow : Gtk.Window {
-    static GLib.Settings settings;
     static View view;
     public MainWindow (Gtk.Application application) {
         Object (
@@ -31,9 +30,9 @@ public class MainWindow : Gtk.Window {
     }
 
     static construct {
-        settings = new GLib.Settings ("com.github.mdh34.hackup");
         view = new View ();
     }
+
     construct {
         set_position (Gtk.WindowPosition.CENTER);
 
@@ -57,12 +56,12 @@ public class MainWindow : Gtk.Window {
         settings_button.set_tooltip_text (_("Settings"));
         header.pack_end (settings_button);
 
-        var window_width = settings.get_int ("width");
-        var window_height = settings.get_int ("height");
+        var window_width = HackUp.settings.get_int ("width");
+        var window_height = HackUp.settings.get_int ("height");
         set_default_size (window_width, window_height);
 
-        var window_x = settings.get_int ("x");
-        var window_y = settings.get_int ("y");
+        var window_x = HackUp.settings.get_int ("x");
+        var window_y = HackUp.settings.get_int ("y");
         if (window_x != -1 || window_y != -1) {
             move (window_x, window_y);
         }
@@ -73,7 +72,7 @@ public class MainWindow : Gtk.Window {
         scroller.add (list);
 
         settings_popover.closed.connect (() => {
-            var list_sorting = settings.get_string ("listtype");
+            var list_sorting = HackUp.settings.get_string ("listtype");
             if (settings_popover.current_sort != list_sorting) {
                 var new_list = new PostList ();
                 scroller.remove (scroller.get_child ());
@@ -85,12 +84,12 @@ public class MainWindow : Gtk.Window {
             }
         });
 
-        view.setup_cookies (settings.get_boolean ("cookies"));
+        view.setup_cookies (HackUp.settings.get_boolean ("cookies"));
 
         var pane = new Gtk.Paned(Gtk.Orientation.HORIZONTAL);
         pane.pack1 (scroller, false, false);
         pane.add2 (view);
-        pane.set_position (settings.get_int ("position"));
+        pane.set_position (HackUp.settings.get_int ("position"));
         add (pane);
         show_all ();
 
@@ -100,11 +99,11 @@ public class MainWindow : Gtk.Window {
             int current_x, current_y, width, height;
             get_position (out current_x, out current_y);
             get_size (out width, out height);
-            settings.set_int ("x", current_x);
-            settings.set_int ("y", current_y);
-            settings.set_int ("width", width);
-            settings.set_int ("height", height);
-            settings.set_int ("position", pane.get_position ());
+            HackUp.settings.set_int ("x", current_x);
+            HackUp.settings.set_int ("y", current_y);
+            HackUp.settings.set_int ("width", width);
+            HackUp.settings.set_int ("height", height);
+            HackUp.settings.set_int ("position", pane.get_position ());
             return false;
         });
 

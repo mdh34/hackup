@@ -20,6 +20,12 @@
  */
 
 public class View : WebKit.WebView {
+    public View () {
+        this.create.connect (() => {
+            return this;
+        });
+    }
+
     public void clear_cookies () {
         string path = Path.build_filename (Environment.get_user_data_dir (), "com.github.mdh34.hackup", "cookies");
         if (GLib.FileUtils.test (path, GLib.FileTest.EXISTS)) {

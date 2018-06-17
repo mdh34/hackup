@@ -27,6 +27,11 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.0.3" date="2018-06-17">
+      <description>
+        <p>Fix a bug opening external links</p>
+      </description>
+    </release>
     <release version="1.0.2" date="2018-06-10">
       <description>
         <p>UI tweaks</p>

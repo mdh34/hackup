@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-07 14:28+0100\n"
 "PO-Revision-Date: 2018-05-20 11:38+0100\n"
-"Last-Translator: Automatically generated\n"
+"Last-Translator: Fábio Luciano <fabio@naoimporta.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -26,15 +26,15 @@ msgstr ""
 #: data/com.github.mdh34.hackup.appdata.xml.in:8
 #: data/com.github.mdh34.hackup.desktop.in:5
 msgid "Read Hacker News from the desktop"
-msgstr ""
+msgstr "Leia o Hacker News pelo desktop"
 
 #: data/com.github.mdh34.hackup.appdata.xml.in:11
 msgid "Read Hacker News stories and comments from the desktop"
-msgstr ""
+msgstr "Leia os artigos e comentários do Hacker News pelo desktop"
 
 #: data/com.github.mdh34.hackup.appdata.xml.in:12
 msgid "Sort by top, new and best stories"
-msgstr ""
+msgstr "Ordernar por artigos no topo, novos melhores"
 
 #: data/com.github.mdh34.hackup.appdata.xml.in:18
 msgid "Matt Harris"
@@ -50,39 +50,39 @@ msgstr ""
 
 #: src/MainWindow.vala:46
 msgid "Unable to reach Hacker News"
-msgstr ""
+msgstr "Não é possível acessar o Hacker News"
 
 #: src/MainWindow.vala:46
 msgid "Please connect to the internet to use HackUp"
-msgstr ""
+msgstr "Por favor, conecte-se a internet para utilizar o HackUp"
 
 #: src/MainWindow.vala:56
 msgid "Settings"
-msgstr ""
+msgstr "Configurações:"
 
 #: src/Widgets/PostEntry.vala:93
 msgid "Comments: "
-msgstr ""
+msgstr "Comentários: "
 
 #: src/Widgets/PostEntry.vala:94
 msgid "Score: "
-msgstr ""
+msgstr "Pontuação: "
 
 #: src/Widgets/SettingsPopover.vala:27
 msgid "Sort stories by:"
-msgstr ""
+msgstr "Ordenar artigos por: "
 
 #: src/Widgets/SettingsPopover.vala:28
 msgid "Top"
-msgstr ""
+msgstr "Topo"
 
 #: src/Widgets/SettingsPopover.vala:32
 msgid "Best"
-msgstr ""
+msgstr "Melhor"
 
 #: src/Widgets/SettingsPopover.vala:36
 msgid "New"
-msgstr ""
+msgstr "Novo"
 
 #: src/Widgets/SettingsPopover.vala:56
 msgid "Cookies"

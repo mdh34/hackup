@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.mdh34.hackup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 14:28+0100\n"
+"POT-Creation-Date: 2018-06-19 20:27+0100\n"
 "PO-Revision-Date: 2018-05-20 11:38+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -68,22 +68,22 @@ msgstr ""
 msgid "Score: "
 msgstr ""
 
-#: src/Widgets/SettingsPopover.vala:27
+#: src/Widgets/SettingsPopover.vala:25
 msgid "Sort stories by:"
 msgstr ""
 
-#: src/Widgets/SettingsPopover.vala:28
+#: src/Widgets/SettingsPopover.vala:26
 msgid "Top"
 msgstr ""
 
-#: src/Widgets/SettingsPopover.vala:32
+#: src/Widgets/SettingsPopover.vala:30
 msgid "Best"
 msgstr ""
 
-#: src/Widgets/SettingsPopover.vala:36
+#: src/Widgets/SettingsPopover.vala:34
 msgid "New"
 msgstr ""
 
-#: src/Widgets/SettingsPopover.vala:56
+#: src/Widgets/SettingsPopover.vala:54
 msgid "Cookies"
 msgstr ""

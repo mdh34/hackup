@@ -6,7 +6,7 @@ Read Hacker News from the desktop
 ![Screenshot](https://raw.githubusercontent.com/mdh34/hackup/master/data/images/screenshot-1.png)
 
 ## Build Dependencies:
- - libgranite-dev
+ - libgranite-dev >= 5.0
  - libgtk-3-dev
  - libjson-glib-dev
  - libwebkit2gtk-4.0-dev

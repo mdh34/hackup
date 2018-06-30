@@ -86,7 +86,7 @@ public class MainWindow : Gtk.Window {
 
         view.setup_cookies (HackUp.settings.get_boolean ("cookies"));
 
-        var pane = new Gtk.Paned(Gtk.Orientation.HORIZONTAL);
+        var pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
         pane.pack1 (scroller, false, false);
         pane.add2 (view);
         pane.set_position (HackUp.settings.get_int ("position"));

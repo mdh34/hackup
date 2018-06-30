@@ -53,7 +53,7 @@ public class PostList : Gtk.ListBox {
         }
 
         for (int i = 0; i < int.min (top.length, 40); i++) {
-            add (new PostEntry(top[i], score_group, title_group, comments_group, author_group));
+            add (new PostEntry (top[i], score_group, title_group, comments_group, author_group));
         }
 
         show_all ();

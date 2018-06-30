@@ -21,12 +21,14 @@
 
 public class Post {
     public string? author;
+    public string? content;
     public string? comment_uri;
     public string? story_uri;
     public string? title;
     public int64 comments;
     public int64 score;
 
+    private Json.Array children;
     private string item;
 
     static Soup.Session session;
@@ -64,6 +66,12 @@ public class Post {
                 if (root_object.has_member ("by")) {
                     author = root_object.get_string_member ("by");
                 }
+                if (root_object.has_member ("kids")) {
+                    children = root_object.get_array_member ("kids");
+                }
+                if (root_object.has_member ("text")) {
+                    content = root_object.get_string_member ("text");
+                }
                 if (root_object.has_member ("title")) {
                     title = root_object.get_string_member ("title");
                 }
@@ -81,5 +89,13 @@ public class Post {
         } catch (Error e) {
             warning ("Error parsing data: %s", e.message);
         }
+    }
+
+    public string[] get_children () {
+        string [] list = {""};
+        for (var i = 0; i < children.get_length (); i ++) {
+            list += children.get_string_element (i);
+        }
+        return list;
     }
 }

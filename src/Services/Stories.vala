@@ -19,18 +19,23 @@
  * Authored by: Matt Harris <matth281@outlook.com>
  */
 namespace Stories {
-    public static async string[] get_posts (string type) throws GLib.Error {
+    public static async int64[] get_posts (string type) throws GLib.Error {
         var uri = "https://hacker-news.firebaseio.com/v0/" + type + "stories.json";
         var message = new Soup.Message ("GET", uri);
         var session = new Soup.Session ();
 
-        string[] array = {};
+        int64[] array = {};
         session.queue_message (message, (session, msg) => {
 
             var data = (string) message.response_body.flatten ().data;
             data = data.delimit ("[]", ' ');
             data = data._strip ();
-            array = data.split (",");
+            var string_data = data.split (",");
+
+            foreach (string item in string_data) {
+                array += int64.parse (item);
+            }
+
             Idle.add (get_posts.callback);
         });
 

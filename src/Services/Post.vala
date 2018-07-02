@@ -26,10 +26,10 @@ public class Post {
     public string? story_uri;
     public string? title;
     public int64 comments;
+    public int64 id;
     public int64 score;
 
     private Json.Array children;
-    private string item;
 
     static Soup.Session session;
 
@@ -37,12 +37,12 @@ public class Post {
         session = new Soup.Session ();
     }
 
-    public Post (string item) {
-        this.item = item;
+    public Post (int64 id) {
+        this.id = id;
     }
 
     public async void load () throws GLib.Error {
-        var uri = "https://hacker-news.firebaseio.com/v0/item/" + item + ".json";
+        var uri = "https://hacker-news.firebaseio.com/v0/item/" + id.to_string () + ".json";
         var message = new Soup.Message ("GET", uri);
 
         session.queue_message (message, (session, msg) => {
@@ -85,16 +85,16 @@ public class Post {
                     comments = root_object.get_int_member ("descendants");
                 }
             }
-            comment_uri = "https://news.ycombinator.com/item?id=" + item;
+            comment_uri = "https://news.ycombinator.com/item?id=" + id.to_string ();
         } catch (Error e) {
             warning ("Error parsing data: %s", e.message);
         }
     }
 
-    public string[] get_children () {
-        string [] list = {};
+    public int64[] get_children () {
+        int64 [] list = {};
         for (var i = 0; i < children.get_length (); i ++) {
-            list += children.get_string_element (i);
+            list += children.get_int_element (i);
         }
         return list;
     }

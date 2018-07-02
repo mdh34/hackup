@@ -43,7 +43,7 @@ public class PostList : Gtk.ListBox {
 
     private async void load () {
         var type = HackUp.settings.get_string ("listtype");
-        string[] top = {};
+        int64[] top = {};
 
         try {
             top = yield Stories.get_posts (type);

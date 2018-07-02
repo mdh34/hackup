@@ -27,7 +27,7 @@ public class PostEntry : Gtk.ListBoxRow {
     private Gtk.Label score_label;
     private Gtk.Label title_label;
 
-    public PostEntry (string id, Gtk.SizeGroup score_group, Gtk.SizeGroup title_group, Gtk.SizeGroup comments_group, Gtk.SizeGroup author_group) {
+    public PostEntry (int64 id, Gtk.SizeGroup score_group, Gtk.SizeGroup title_group, Gtk.SizeGroup comments_group, Gtk.SizeGroup author_group) {
         author_label = new Gtk.Label (null);
         var author_context = author_label.get_style_context ();
         author_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
@@ -35,7 +35,9 @@ public class PostEntry : Gtk.ListBoxRow {
         comments_label = new Gtk.Label (null);
         comments_label.set_use_markup (true);
         comments_label.activate_link.connect ((uri) => {
-            MainWindow.load_page (uri);
+            MainWindow.stack.add_named (new CommentsList (post), post.id.to_string ());
+            MainWindow.stack.set_visible_child_name (post.id.to_string ());
+            MainWindow.stack.show_all ();
             return true;
         });
 

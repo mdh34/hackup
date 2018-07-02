@@ -36,7 +36,7 @@ public class PostEntry : Gtk.ListBoxRow {
         comments_label.set_use_markup (true);
         comments_label.activate_link.connect ((uri) => {
             if (MainWindow.stack.get_child_by_name (post.id.to_string ()) == null) {
-                MainWindow.stack.add_named (new CommentsList (post), post.id.to_string ());
+                MainWindow.stack.add_named (new CommentsList (post, post.id), post.id.to_string ());
             }
             MainWindow.stack.set_visible_child_name (post.id.to_string ());
             MainWindow.stack.show_all ();

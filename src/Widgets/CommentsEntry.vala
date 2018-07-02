@@ -47,7 +47,7 @@ public class CommentEntry : Gtk.ListBoxRow {
     private Gtk.Button sub_button;
     private Gtk.Box info_box;
 
-    public CommentEntry (int64 id, Gtk.SizeGroup author_group) {
+    public CommentEntry (int64 id, int64 last, Gtk.SizeGroup author_group) {
         author_label = new Gtk.Label (null);
         author_label.xalign = 0;
         var author_context = author_label.get_style_context ();
@@ -65,10 +65,10 @@ public class CommentEntry : Gtk.ListBoxRow {
             }
         });
 
-        var sub_button = new Gtk.Button.with_label ("Replies");
+        var sub_button = new Gtk.Button.with_label (_("Replies"));
         sub_button.clicked.connect (() => {
             if (MainWindow.stack.get_child_by_name (post.id.to_string ()) == null) {
-                MainWindow.stack.add_named (new CommentsList (post), post.id.to_string ());
+                MainWindow.stack.add_named (new CommentsList (post, last), post.id.to_string ());
             }
             MainWindow.stack.set_visible_child_name (post.id.to_string ());
             MainWindow.stack.show_all ();
@@ -76,7 +76,7 @@ public class CommentEntry : Gtk.ListBoxRow {
 
         info_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
         info_box.pack_start (author_label);
-        info_box.pack_start (sub_button);
+        info_box.pack_start (sub_button, false, false);
 
         var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
         box.pack_start (content_label);

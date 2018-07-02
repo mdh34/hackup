@@ -59,6 +59,11 @@ public class MainWindow : Gtk.Window {
         settings_button.set_tooltip_text (_("Settings"));
         header.pack_end (settings_button);
 
+        var back_button = new Gtk.Button ();
+        back_button.get_style_context ().add_class (Granite.STYLE_CLASS_BACK_BUTTON);
+        back_button.no_show_all = true;
+        header.pack_start (back_button);
+
         var window_width = HackUp.settings.get_int ("width");
         var window_height = HackUp.settings.get_int ("height");
         set_default_size (window_width, window_height);

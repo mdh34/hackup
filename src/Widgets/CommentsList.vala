@@ -21,7 +21,6 @@
 
 public class CommentsList : Gtk.ScrolledWindow {
     private Gtk.SizeGroup author_group;
-    private Gtk.SizeGroup content_group;
     private Gtk.ListBox box;
     private Post post;
 
@@ -32,7 +31,6 @@ public class CommentsList : Gtk.ScrolledWindow {
         box.set_selection_mode (Gtk.SelectionMode.NONE);
 
         author_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.BOTH);
-        content_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.BOTH);
         add (box);
         load.begin ();
     }
@@ -40,8 +38,8 @@ public class CommentsList : Gtk.ScrolledWindow {
     private async void load () {
         int64[] list = {};
         list = post.get_children ();
-        for (int i = 1; i < int.min (list.length, 40); i++) {
-            box.add (new CommentEntry (list[i], content_group, author_group));
+        for (int i = 0; i < int.min (list.length, 40); i++) {
+            box.add (new CommentEntry (list[i], author_group));
         }
 
         show_all ();

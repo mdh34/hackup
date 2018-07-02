@@ -43,17 +43,18 @@ public class CommentEntry : Gtk.ListBoxRow {
     public Post post;
 
     private Gtk.Label author_label;
-    private Gtk.Label content_label;
+    private Gtk.TextView content_label;
 
-    public CommentEntry (int64 id, Gtk.SizeGroup content_group, Gtk.SizeGroup author_group) {
+    public CommentEntry (int64 id, Gtk.SizeGroup author_group) {
         author_label = new Gtk.Label (null);
+        author_label.xalign = 0;
         var author_context = author_label.get_style_context ();
         author_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
         author_context.add_class (Granite.STYLE_CLASS_ACCENT);
 
-        content_label = new Gtk.Label (null);
-        content_label.use_markup = true;
-        content_label.xalign = 0;
+        content_label = new Gtk.TextView ();
+        content_label.wrap_mode = Gtk.WrapMode.WORD;
+        content_label.editable = false;
 
         this.activate.connect (() => {
             if (post.story_uri != null) {
@@ -61,7 +62,6 @@ public class CommentEntry : Gtk.ListBoxRow {
             }
         });
 
-        content_group.add_widget (content_label);
         author_group.add_widget (author_label);
 
         var info_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
@@ -86,6 +86,51 @@ public class CommentEntry : Gtk.ListBoxRow {
 
     private void update () {
         author_label.label = post.author;
-        content_label.label = post.content;
+        Gtk.TextIter iter;
+        content_label.buffer.get_start_iter (out iter);
+        if (post.content != null) {
+            content_label.buffer.insert_markup (ref iter, remove_html_tags (post.content), -1);
+        } else {
+            this.set_visible (false);
+        }
+    }
+
+    // Remove HTML tags so buffer is presented properly
+    // Taken from https://gitlab.gnome.org/GNOME/geary/blob/master/src/engine/util/util-html.vala
+    private string remove_html_tags(string input) {
+        try {
+            string output = input;
+
+            unichar c;
+            uint64 less_than = 0;
+            uint64 greater_than = 0;
+            for (int i = 0; output.get_next_char (ref i, out c);) {
+                if (c == '<')
+                    less_than++;
+                else if (c == '>')
+                    greater_than++;
+            }
+
+            if (less_than == greater_than + 1) {
+                output += ">";
+                greater_than++;
+            }
+
+            if (less_than != greater_than)
+                return input;
+
+            Regex script = new Regex("<script[^>]*?>[\\s\\S]*?<\\/script>", RegexCompileFlags.CASELESS);
+            output = script.replace(output, -1, 0, "");
+
+            Regex style = new Regex("<style[^>]*?>[\\s\\S]*?<\\/style>", RegexCompileFlags.CASELESS);
+            output = style.replace(output, -1, 0, "");
+
+            Regex tags = new Regex("<(.|\n)*?>", RegexCompileFlags.CASELESS);
+            return tags.replace(output, -1, 0, "");
+        } catch (Error e) {
+            debug("Error stripping HTML tags: %s", e.message);
+        }
+
+        return input;
     }
 }

@@ -51,8 +51,6 @@ public class CommentEntry : Gtk.ListBoxRow {
         var author_context = author_label.get_style_context ();
         author_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
 
-
-
         score_label = new Gtk.Label (null);
         var score_context = score_label.get_style_context ();
         score_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
@@ -75,7 +73,6 @@ public class CommentEntry : Gtk.ListBoxRow {
         var info_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
         info_box.pack_start (author_label);
         info_box.pack_start (score_label);
-
 
         var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
         box.pack_start (content_label);

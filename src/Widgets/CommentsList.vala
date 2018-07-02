@@ -52,6 +52,7 @@ public class CommentsList : Gtk.ScrolledWindow {
         container.pack_start (top_bar, false, false);
         container.pack_start (comments_box);
         add (container);
+
         load.begin ();
     }
 

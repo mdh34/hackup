@@ -97,6 +97,7 @@ public class CommentEntry : Gtk.ListBoxRow {
 
     private void update () {
         author_label.label = post.author;
+
         Gtk.TextIter iter;
         content_label.buffer.get_start_iter (out iter);
         if (post.content != null) {
@@ -116,7 +117,7 @@ public class CommentEntry : Gtk.ListBoxRow {
 
     // Remove HTML tags so buffer is presented properly
     // Taken from https://gitlab.gnome.org/GNOME/geary/blob/master/src/engine/util/util-html.vala
-    private string remove_html_tags(string input) {
+    private string remove_html_tags (string input) {
         try {
             string output = input;
 
@@ -138,16 +139,16 @@ public class CommentEntry : Gtk.ListBoxRow {
             if (less_than != greater_than)
                 return input;
 
-            Regex script = new Regex("<script[^>]*?>[\\s\\S]*?<\\/script>", RegexCompileFlags.CASELESS);
-            output = script.replace(output, -1, 0, "");
+            Regex script = new Regex ("<script[^>]*?>[\\s\\S]*?<\\/script>", RegexCompileFlags.CASELESS);
+            output = script.replace (output, -1, 0, "");
 
-            Regex style = new Regex("<style[^>]*?>[\\s\\S]*?<\\/style>", RegexCompileFlags.CASELESS);
-            output = style.replace(output, -1, 0, "");
+            Regex style = new Regex ("<style[^>]*?>[\\s\\S]*?<\\/style>", RegexCompileFlags.CASELESS);
+            output = style.replace (output, -1, 0, "");
 
-            Regex tags = new Regex("<(.|\n)*?>", RegexCompileFlags.CASELESS);
-            return tags.replace(output, -1, 0, "");
+            Regex tags = new Regex ("<(.|\n)*?>", RegexCompileFlags.CASELESS);
+            return tags.replace (output, -1, 0, "");
         } catch (Error e) {
-            debug("Error stripping HTML tags: %s", e.message);
+            debug ("Error stripping HTML tags: %s", e.message);
         }
 
         return input;

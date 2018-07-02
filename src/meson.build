@@ -4,6 +4,8 @@ executable(
     'MainWindow.vala',
     'Services/Post.vala',
     'Services/Stories.vala',
+    'Widgets/CommentsEntry.vala',
+    'Widgets/CommentsList.vala',
     'Widgets/PostEntry.vala',
     'Widgets/PostList.vala',
     'Widgets/SettingsPopover.vala',

@@ -21,6 +21,7 @@
 
 public class MainWindow : Gtk.Window {
     static View view;
+    public static Gtk.Stack stack;
     public MainWindow (Gtk.Application application) {
         Object (
             application: application,
@@ -31,6 +32,8 @@ public class MainWindow : Gtk.Window {
 
     static construct {
         view = new View ();
+        stack = new Gtk.Stack ();
+        stack.add_named (view, "view");
     }
 
     construct {
@@ -88,7 +91,7 @@ public class MainWindow : Gtk.Window {
 
         var pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
         pane.pack1 (scroller, false, false);
-        pane.add2 (view);
+        pane.add2 (stack);
         pane.set_position (HackUp.settings.get_int ("position"));
         add (pane);
         show_all ();

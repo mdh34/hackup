@@ -93,8 +93,10 @@ public class Post {
 
     public int64[] get_children () {
         int64 [] list = {};
-        for (var i = 0; i < children.get_length (); i ++) {
-            list += children.get_int_element (i);
+        if (children != null) {
+            for (var i = 0; i < children.get_length (); i ++) {
+                list += children.get_int_element (i);
+            }
         }
         return list;
     }

@@ -44,6 +44,8 @@ public class CommentEntry : Gtk.ListBoxRow {
 
     private Gtk.Label author_label;
     private Gtk.TextView content_label;
+    private Gtk.Button sub_button;
+    private Gtk.Box info_box;
 
     public CommentEntry (int64 id, Gtk.SizeGroup author_group) {
         author_label = new Gtk.Label (null);
@@ -51,6 +53,7 @@ public class CommentEntry : Gtk.ListBoxRow {
         var author_context = author_label.get_style_context ();
         author_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
         author_context.add_class (Granite.STYLE_CLASS_ACCENT);
+        author_group.add_widget (author_label);
 
         content_label = new Gtk.TextView ();
         content_label.wrap_mode = Gtk.WrapMode.WORD;
@@ -62,10 +65,18 @@ public class CommentEntry : Gtk.ListBoxRow {
             }
         });
 
-        author_group.add_widget (author_label);
+        var sub_button = new Gtk.Button.with_label ("Replies");
+        sub_button.clicked.connect (() => {
+            if (MainWindow.stack.get_child_by_name (post.id.to_string ()) == null) {
+                MainWindow.stack.add_named (new CommentsList (post), post.id.to_string ());
+            }
+            MainWindow.stack.set_visible_child_name (post.id.to_string ());
+            MainWindow.stack.show_all ();
+        });
 
-        var info_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
+        info_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
         info_box.pack_start (author_label);
+        info_box.pack_start (sub_button);
 
         var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
         box.pack_start (content_label);
@@ -92,6 +103,14 @@ public class CommentEntry : Gtk.ListBoxRow {
             content_label.buffer.insert_markup (ref iter, remove_html_tags (post.content), -1);
         } else {
             this.set_visible (false);
+        }
+
+        if (post.get_children () == null) {
+            foreach (Gtk.Widget item in info_box.get_children ()) {
+                if (item is Gtk.Button) {
+                    info_box.remove (item);
+                }
+            }
         }
     }
 

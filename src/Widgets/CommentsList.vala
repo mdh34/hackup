@@ -25,8 +25,9 @@ public class CommentsList : Gtk.ScrolledWindow {
     private Post post;
 
     public CommentsList (Post parent) {
-        box = new Gtk.ListBox ();
         post = parent;
+
+        box = new Gtk.ListBox ();
         box.activate_on_single_click = true;
         box.set_selection_mode (Gtk.SelectionMode.NONE);
 
@@ -40,6 +41,12 @@ public class CommentsList : Gtk.ScrolledWindow {
         list = post.get_children ();
         for (int i = 0; i < list.length; i++) {
             box.add (new CommentEntry (list[i], author_group));
+        }
+
+        foreach (Gtk.Widget child in get_children ()) {
+            if (child.visible == false) {
+                remove (child);
+            }
         }
 
         show_all ();

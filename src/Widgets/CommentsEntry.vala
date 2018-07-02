@@ -43,18 +43,13 @@ public class CommentEntry : Gtk.ListBoxRow {
     public Post post;
 
     private Gtk.Label author_label;
-    private Gtk.Label score_label;
     private Gtk.Label content_label;
 
-    public CommentEntry (int64 id, Gtk.SizeGroup score_group, Gtk.SizeGroup content_group, Gtk.SizeGroup author_group) {
+    public CommentEntry (int64 id, Gtk.SizeGroup content_group, Gtk.SizeGroup author_group) {
         author_label = new Gtk.Label (null);
         var author_context = author_label.get_style_context ();
         author_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
-
-        score_label = new Gtk.Label (null);
-        var score_context = score_label.get_style_context ();
-        score_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
-        score_context.add_class (Granite.STYLE_CLASS_ACCENT);
+        author_context.add_class (Granite.STYLE_CLASS_ACCENT);
 
         content_label = new Gtk.Label (null);
         content_label.use_markup = true;
@@ -67,12 +62,10 @@ public class CommentEntry : Gtk.ListBoxRow {
         });
 
         content_group.add_widget (content_label);
-        score_group.add_widget (score_label);
         author_group.add_widget (author_label);
 
         var info_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
         info_box.pack_start (author_label);
-        info_box.pack_start (score_label);
 
         var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
         box.pack_start (content_label);
@@ -93,8 +86,6 @@ public class CommentEntry : Gtk.ListBoxRow {
 
     private void update () {
         author_label.label = post.author;
-        var comments_html = "<a href=\"" + post.comment_uri + "\">";
-        score_label.label = _("Score: ") + post.score.to_string ();
         content_label.label = post.content;
     }
 }

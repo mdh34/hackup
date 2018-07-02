@@ -38,7 +38,7 @@ public class CommentsList : Gtk.ScrolledWindow {
     private async void load () {
         int64[] list = {};
         list = post.get_children ();
-        for (int i = 0; i < int.min (list.length, 40); i++) {
+        for (int i = 0; i < list.length; i++) {
             box.add (new CommentEntry (list[i], author_group));
         }
 

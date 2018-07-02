@@ -35,7 +35,9 @@ public class PostEntry : Gtk.ListBoxRow {
         comments_label = new Gtk.Label (null);
         comments_label.set_use_markup (true);
         comments_label.activate_link.connect ((uri) => {
-            MainWindow.stack.add_named (new CommentsList (post), post.id.to_string ());
+            if (MainWindow.stack.get_child_by_name (post.id.to_string ()) == null) {
+                MainWindow.stack.add_named (new CommentsList (post), post.id.to_string ());
+            }
             MainWindow.stack.set_visible_child_name (post.id.to_string ());
             MainWindow.stack.show_all ();
             return true;
@@ -59,6 +61,7 @@ public class PostEntry : Gtk.ListBoxRow {
         this.activate.connect (() => {
             if (post.story_uri != null) {
                 MainWindow.load_page (post.story_uri);
+                MainWindow.stack.set_visible_child_name ("view");
             }
         });
 

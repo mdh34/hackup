@@ -36,6 +36,7 @@ public class PostList : Gtk.ListBox {
 
         row_selected.connect ((row) => {
             MainWindow.load_page (((PostEntry) row).post.story_uri);
+            MainWindow.stack.set_visible_child_name ("view");
         });
 
         load.begin ();

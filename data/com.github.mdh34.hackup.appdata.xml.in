@@ -7,10 +7,7 @@
   <name>HackUp</name>
   <summary>Read Hacker News from the desktop</summary>
   <description>
-    <ul>
-      <li>Read Hacker News stories and comments from the desktop</li>
-      <li>Sort by top, new and best stories</li>
-    </ul>
+    <p>Read Hacker News stories and comments distraction-free from the desktop</p>
   </description>
   <provides>
     <binary>com.github.mdh34.hackup</binary>
@@ -27,6 +24,11 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.1.1" date="2018-07-04">
+      <description>
+        <p>Update appdata</p>
+      </description>
+    </release>
     <release version="1.1.0" date="2018-07-03">
       <description>
         <p>Comments can now be browsed natively instead of using a WebView</p>

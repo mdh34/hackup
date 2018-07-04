@@ -8,6 +8,8 @@
   <summary>Read Hacker News from the desktop</summary>
   <description>
     <p>Read Hacker News stories and comments distraction-free from the desktop</p>
+    <p>Sort by top, new and best stories</p>
+    <p>Enable or disable site cookies</p>
   </description>
   <provides>
     <binary>com.github.mdh34.hackup</binary>

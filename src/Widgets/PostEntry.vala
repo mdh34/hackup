@@ -22,8 +22,8 @@
 public class PostEntry : Gtk.ListBoxRow {
     public Post post;
 
+    private Gtk.Button comments_button;
     private Gtk.Label author_label;
-    private Gtk.Label comments_label;
     private Gtk.Label score_label;
     private Gtk.Label title_label;
 
@@ -32,18 +32,16 @@ public class PostEntry : Gtk.ListBoxRow {
         var author_context = author_label.get_style_context ();
         author_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
 
-        comments_label = new Gtk.Label (null);
-        comments_label.set_use_markup (true);
-        comments_label.activate_link.connect ((uri) => {
+        comments_button = new Gtk.Button ();
+        comments_button.clicked.connect (() => {
             if (MainWindow.stack.get_child_by_name (post.id.to_string ()) == null) {
                 MainWindow.stack.add_named (new CommentsList (post, post.id), post.id.to_string ());
             }
             MainWindow.stack.set_visible_child_name (post.id.to_string ());
             MainWindow.stack.show_all ();
-            return true;
         });
 
-        var comments_context = comments_label.get_style_context ();
+        var comments_context = comments_button.get_style_context ();
         comments_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
         comments_context.add_class (Granite.STYLE_CLASS_ACCENT);
 
@@ -67,13 +65,13 @@ public class PostEntry : Gtk.ListBoxRow {
 
         title_group.add_widget (title_label);
         score_group.add_widget (score_label);
-        comments_group.add_widget (comments_label);
+        comments_group.add_widget (comments_button);
         author_group.add_widget (author_label);
 
         var info_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
         info_box.pack_start (author_label);
         info_box.pack_start (score_label);
-        info_box.pack_start (comments_label);
+        info_box.pack_start (comments_button);
 
         var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
         box.pack_start (title_label);
@@ -94,8 +92,8 @@ public class PostEntry : Gtk.ListBoxRow {
 
     private void update () {
         author_label.label = post.author;
-        var comments_html = "<a href=\"" + post.comment_uri + "\">";
-        comments_label.label = comments_html + _("Comments: ") + post.comments.to_string () + "</a>";
+
+        comments_button.label = _("Comments: ") + post.comments.to_string ();
         score_label.label = _("Score: ") + post.score.to_string ();
         title_label.label = post.title;
         title_label.set_tooltip_text (title_label.label);

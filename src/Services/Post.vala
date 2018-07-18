@@ -85,7 +85,6 @@ public class Post {
                     comments = root_object.get_int_member ("descendants");
                 }
             }
-            comment_uri = "https://news.ycombinator.com/item?id=" + id.to_string ();
         } catch (Error e) {
             warning ("Error parsing data: %s", e.message);
         }

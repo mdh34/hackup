@@ -24,6 +24,7 @@ public class PostEntry : Gtk.ListBoxRow {
 
     private Gtk.Button comments_button;
     private Gtk.Label author_label;
+    private Gtk.Label comments_label;
     private Gtk.Label score_label;
     private Gtk.Label title_label;
 
@@ -31,6 +32,11 @@ public class PostEntry : Gtk.ListBoxRow {
         author_label = new Gtk.Label (null);
         var author_context = author_label.get_style_context ();
         author_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
+
+        comments_label = new Gtk.Label (null);
+        var comments_context = comments_label.get_style_context ();
+        comments_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
+        comments_context.add_class (Granite.STYLE_CLASS_ACCENT);
 
         comments_button = new Gtk.Button ();
         comments_button.clicked.connect (() => {
@@ -40,10 +46,7 @@ public class PostEntry : Gtk.ListBoxRow {
             MainWindow.stack.set_visible_child_name (post.id.to_string ());
             MainWindow.stack.show_all ();
         });
-
-        var comments_context = comments_button.get_style_context ();
-        comments_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
-        comments_context.add_class (Granite.STYLE_CLASS_ACCENT);
+        comments_button.add(comments_label);
 
         score_label = new Gtk.Label (null);
         var score_context = score_label.get_style_context ();
@@ -93,7 +96,7 @@ public class PostEntry : Gtk.ListBoxRow {
     private void update () {
         author_label.label = post.author;
 
-        comments_button.label = _("Comments: ") + post.comments.to_string ();
+        comments_label.label = _("Comments: ") + post.comments.to_string ();
         score_label.label = _("Score: ") + post.score.to_string ();
         title_label.label = post.title;
         title_label.set_tooltip_text (title_label.label);

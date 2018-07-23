@@ -65,7 +65,7 @@ public class CommentEntry : Gtk.ListBoxRow {
             }
         });
 
-        var sub_button = new Gtk.Button.with_label (_("Replies"));
+        sub_button = new Gtk.Button.with_label (_("Replies"));
         sub_button.clicked.connect (() => {
             if (MainWindow.stack.get_child_by_name (post.id.to_string ()) == null) {
                 MainWindow.stack.add_named (new CommentsList (post, last), post.id.to_string ());
@@ -88,7 +88,7 @@ public class CommentEntry : Gtk.ListBoxRow {
             try {
                 post.load.end (res);
             } catch (Error e) {
-                warning ("Error getting post: %s, trying again...", e.message);
+                warning ("Error getting post: %s, trying again…", e.message);
                 post.load.begin (() => update ());
             }
             update ();

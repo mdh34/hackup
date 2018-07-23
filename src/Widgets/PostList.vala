@@ -49,7 +49,7 @@ public class PostList : Gtk.ListBox {
         try {
             top = yield Stories.get_posts (type);
         } catch (Error e) {
-            warning ("Error getting stories: %s, trying again...", e.message);
+            warning ("Error getting stories: %s, trying again…", e.message);
             top = yield Stories.get_posts (type);
         }
 

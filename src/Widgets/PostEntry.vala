@@ -46,7 +46,7 @@ public class PostEntry : Gtk.ListBoxRow {
             MainWindow.stack.set_visible_child_name (post.id.to_string ());
             MainWindow.stack.show_all ();
         });
-        comments_button.add(comments_label);
+        comments_button.add (comments_label);
 
         score_label = new Gtk.Label (null);
         var score_context = score_label.get_style_context ();
@@ -86,7 +86,7 @@ public class PostEntry : Gtk.ListBoxRow {
             try {
                 post.load.end (res);
             } catch (Error e) {
-                warning ("Error getting post: %s, trying again...", e.message);
+                warning ("Error getting post: %s, trying again…", e.message);
                 post.load.begin (() => update ());
             }
             update ();

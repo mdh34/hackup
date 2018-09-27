@@ -38,7 +38,7 @@ public class CommentsList : Gtk.ScrolledWindow {
             });
         }
 
-        last_label = new Gtk.Label (_("Replies to ")+  post.author);
+        last_label = new Gtk.Label (_("Replies to ") + post.author);
 
         var top_bar = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
         top_bar.pack_start (back_button, false, false);

@@ -9,6 +9,7 @@ Read Hacker News from the desktop
  - libgranite-dev >= 5.0
  - libgtk-3-dev
  - libjson-glib-dev
+ - libsoup-2.4
  - libwebkit2gtk-4.0-dev
  - meson
  - valac
@@ -19,6 +20,13 @@ Read Hacker News from the desktop
  ```
  flatpak install flathub com.github.mdh34.hackup
  ```
+
+### Arch Linux
+Arch Linux users can find Hackup under the name [hackup-git](https://aur.archlinux.org/packages/hackup-git/) in the **AUR**:
+
+`$ aurman -S hackup-git`
+
+
 ### From Source:
 ```
 sudo apt install libgranite-dev libgtk-3-dev libjson-glib-dev libwebkit2gtk-4.0-dev meson valac

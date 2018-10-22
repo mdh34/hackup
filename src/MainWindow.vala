@@ -64,6 +64,13 @@ public class MainWindow : Gtk.Window {
         back_button.no_show_all = true;
         header.pack_start (back_button);
 
+        var gtk_settings = Gtk.Settings.get_default ();
+        var theme_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
+        theme_switch.row_homogeneous = true;
+        theme_switch.active = HackUp.settings.get_boolean ("dark");
+        theme_switch.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
+        header.pack_end (theme_switch);
+
         var window_width = HackUp.settings.get_int ("width");
         var window_height = HackUp.settings.get_int ("height");
         set_default_size (window_width, window_height);

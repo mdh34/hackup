@@ -64,11 +64,20 @@ public class MainWindow : Gtk.Window {
         back_button.no_show_all = true;
         header.pack_start (back_button);
 
+        PostList list;
         var gtk_settings = Gtk.Settings.get_default ();
         var theme_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
         theme_switch.row_homogeneous = true;
         theme_switch.active = HackUp.settings.get_boolean ("dark");
         theme_switch.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
+        theme_switch.notify["active"].connect(() => {
+            if (theme_switch.active) {
+                list.get_style_context ().add_class("dark");
+            }
+            else {
+                list.get_style_context ().remove_class("dark");
+            }
+        });
         header.pack_end (theme_switch);
 
         var window_width = HackUp.settings.get_int ("width");
@@ -81,7 +90,7 @@ public class MainWindow : Gtk.Window {
             move (window_x, window_y);
         }
 
-        var list = new PostList ();
+        list = new PostList ();
         var scroller = new Gtk.ScrolledWindow (null, null);
         scroller.hscrollbar_policy = Gtk.PolicyType.NEVER;
         scroller.add (list);

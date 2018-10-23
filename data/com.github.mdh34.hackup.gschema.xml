@@ -38,5 +38,10 @@
       <summary>cookies storage</summary>
       <description>Stores whether to keep cookies</description>
     </key>
+    <key name="dark" type="b">
+      <default>false</default>
+      <summary>dark mode state</summary>
+      <description>stores the last known dark mode state</description>
+    </key>
   </schema>
 </schemalist>

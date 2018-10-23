@@ -64,6 +64,21 @@ public class MainWindow : Gtk.Window {
         back_button.no_show_all = true;
         header.pack_start (back_button);
 
+        PostList list;
+        var gtk_settings = Gtk.Settings.get_default ();
+        var theme_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
+        theme_switch.row_homogeneous = true;
+        theme_switch.active = HackUp.settings.get_boolean ("dark");
+        theme_switch.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
+        theme_switch.notify["active"].connect (() => {
+            if (theme_switch.active) {
+                list.get_style_context ().add_class ("dark");
+            } else {
+                list.get_style_context ().remove_class ("dark");
+            }
+        });
+        header.pack_end (theme_switch);
+
         var window_width = HackUp.settings.get_int ("width");
         var window_height = HackUp.settings.get_int ("height");
         set_default_size (window_width, window_height);
@@ -74,10 +89,16 @@ public class MainWindow : Gtk.Window {
             move (window_x, window_y);
         }
 
-        var list = new PostList ();
+        list = new PostList ();
         var scroller = new Gtk.ScrolledWindow (null, null);
         scroller.hscrollbar_policy = Gtk.PolicyType.NEVER;
         scroller.add (list);
+
+        var dark = HackUp.settings.get_boolean ("dark");
+        if (dark) {
+            gtk_settings.set ("gtk-application-prefer-dark-theme", true);
+            list.get_style_context ().add_class ("dark");
+        }
 
         settings_popover.closed.connect (() => {
             var list_sorting = HackUp.settings.get_string ("listtype");
@@ -107,6 +128,7 @@ public class MainWindow : Gtk.Window {
             int current_x, current_y, width, height;
             get_position (out current_x, out current_y);
             get_size (out width, out height);
+            HackUp.settings.set_boolean ("dark", theme_switch.active);
             HackUp.settings.set_int ("x", current_x);
             HackUp.settings.set_int ("y", current_y);
             HackUp.settings.set_int ("width", width);

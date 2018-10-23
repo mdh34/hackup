@@ -15,6 +15,10 @@ row:selected {
     background-color: #e6e6e6;
 }
 
+.dark row:selected {
+    background-color: #666666
+}
+
 /* Label styling */
 .accent {
   color: @colorAccent;

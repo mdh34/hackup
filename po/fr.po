@@ -9,11 +9,11 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-02 18:53+0100\n"
 "PO-Revision-Date: 2018-10-27 11:29+0100\n"
-"Last-Translator: Ciar·n Ainsworth <ciaranainsworth@outlook.com>\n"
+"Last-Translator: Ciar√°n Ainsworth <ciaranainsworth@outlook.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 2.2\n"
@@ -55,11 +55,11 @@ msgstr "Impossible d'atteindre Hacker News"
 
 #: src/MainWindow.vala:49
 msgid "Please connect to the internet to use HackUp"
-msgstr "Veuillez vous connecter ‡ Internet pour utiliser HackUp"
+msgstr "Veuillez vous connecter √† Internet pour utiliser HackUp"
 
 #: src/MainWindow.vala:59
 msgid "Settings"
-msgstr "ParamËtres"
+msgstr "Param√®tres"
 
 #: src/Widgets/PostEntry.vala:98
 msgid "Comments: "
@@ -67,7 +67,7 @@ msgstr "Commentaires: "
 
 #: src/Widgets/PostEntry.vala:99
 msgid "Score: "
-msgstr "RÈsultat: "
+msgstr "R√©sultat: "
 
 #: src/Widgets/SettingsPopover.vala:25
 msgid "Sort stories by:"

@@ -27,11 +27,11 @@ msgstr "HackUp"
 #: data/com.github.mdh34.hackup.appdata.xml.in:8
 #: data/com.github.mdh34.hackup.desktop.in:5
 msgid "Read Hacker News from the desktop"
-msgstr "デスクトップからハッカーニュースを読む"
+msgstr "デスクトップからハッカーニュースを読みます"
 
 #: data/com.github.mdh34.hackup.appdata.xml.in:11
 msgid "Read Hacker News stories and comments from the desktop"
-msgstr "ハッカーニュース記事やデスクトップからのコメントを読む"
+msgstr "デスクトップからハッカーニュース記事やコメントを読みます"
 
 #: data/com.github.mdh34.hackup.appdata.xml.in:12
 msgid "Sort by top, new and best stories"
@@ -55,7 +55,7 @@ msgstr "ハッカーニュースに到達することができません"
 
 #: src/MainWindow.vala:49
 msgid "Please connect to the internet to use HackUp"
-msgstr "HackUpを使用するにはインターネットに接続してください"
+msgstr "HackUp を使用するにはインターネットに接続してください"
 
 #: src/MainWindow.vala:59
 msgid "Settings"
@@ -71,19 +71,19 @@ msgstr "スコア: "
 
 #: src/Widgets/SettingsPopover.vala:25
 msgid "Sort stories by:"
-msgstr "記事を並べ替える:"
+msgstr "記事を並べ替え:"
 
 #: src/Widgets/SettingsPopover.vala:26
 msgid "Top"
-msgstr "トップ"
+msgstr "トップ順"
 
 #: src/Widgets/SettingsPopover.vala:30
 msgid "Best"
-msgstr "ベスト"
+msgstr "ベスト順"
 
 #: src/Widgets/SettingsPopover.vala:34
 msgid "New"
-msgstr "新しい"
+msgstr "新しい順"
 
 #: src/Widgets/SettingsPopover.vala:54
 msgid "Cookies"

@@ -29,6 +29,11 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.1.5" date="2018-10-28">
+      <description>
+        <p>Added Dutch, French and Japanese translations</p>
+      </description>
+    </release>
     <release version="1.1.4" date="2018-10-23">
       <description>
         <p>Added a dark mode toggle</p>

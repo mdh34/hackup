@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.mdh34.hackup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-02 18:53+0100\n"
+"POT-Creation-Date: 2018-10-29 20:58+0000\n"
 "PO-Revision-Date: 2018-05-20 11:38+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -29,15 +29,19 @@ msgstr ""
 msgid "Read Hacker News from the desktop"
 msgstr ""
 
-#: data/com.github.mdh34.hackup.appdata.xml.in:11
-msgid "Read Hacker News stories and comments from the desktop"
+#: data/com.github.mdh34.hackup.appdata.xml.in:10
+msgid "Read Hacker News stories and comments distraction-free from the desktop"
 msgstr ""
 
-#: data/com.github.mdh34.hackup.appdata.xml.in:12
+#: data/com.github.mdh34.hackup.appdata.xml.in:11
 msgid "Sort by top, new and best stories"
 msgstr ""
 
-#: data/com.github.mdh34.hackup.appdata.xml.in:18
+#: data/com.github.mdh34.hackup.appdata.xml.in:12
+msgid "Enable or disable site cookies"
+msgstr ""
+
+#: data/com.github.mdh34.hackup.appdata.xml.in:17
 msgid "Matt Harris"
 msgstr ""
 
@@ -61,11 +65,11 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: src/Widgets/PostEntry.vala:98
+#: src/Widgets/PostEntry.vala:99
 msgid "Comments: "
 msgstr ""
 
-#: src/Widgets/PostEntry.vala:99
+#: src/Widgets/PostEntry.vala:100
 msgid "Score: "
 msgstr ""
 

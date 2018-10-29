@@ -1,89 +1,90 @@
-# Spanish translations for com.github.mdh34.hackup package.
-# Copyright (C) 2018 THE com.github.mdh34.hackup'S COPYRIGHT HOLDER
+# Spanish translation for HackUp.
+# Copyright (C) 2018 Adolfo Jayme Barrientos
 # This file is distributed under the same license as the com.github.mdh34.hackup package.
-# Automatically generated, 2018.
+# Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.mdh34.hackup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-02 18:53+0100\n"
-"PO-Revision-Date: 2018-05-20 11:38+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: es\n"
+"PO-Revision-Date: 2018-10-29 12:58-0600\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.1.1\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
 
 #: data/com.github.mdh34.hackup.appdata.xml.in:7
 #: data/com.github.mdh34.hackup.desktop.in:3
 #: data/com.github.mdh34.hackup.desktop.in:4
 msgid "HackUp"
-msgstr ""
+msgstr "HackUp"
 
 #: data/com.github.mdh34.hackup.appdata.xml.in:8
 #: data/com.github.mdh34.hackup.desktop.in:5
 msgid "Read Hacker News from the desktop"
-msgstr ""
+msgstr "Lea Hacker News desde el escritorio"
 
 #: data/com.github.mdh34.hackup.appdata.xml.in:11
 msgid "Read Hacker News stories and comments from the desktop"
-msgstr ""
+msgstr "Consulte historias y comentarios de Hacker News desde el escritorio"
 
 #: data/com.github.mdh34.hackup.appdata.xml.in:12
 msgid "Sort by top, new and best stories"
-msgstr ""
+msgstr "Ordene las historias según principales, recientes o mejores"
 
 #: data/com.github.mdh34.hackup.appdata.xml.in:18
 msgid "Matt Harris"
-msgstr ""
+msgstr "Matt Harris"
 
 #: data/com.github.mdh34.hackup.desktop.in:8
 msgid "com.github.mdh34.hackup"
-msgstr ""
+msgstr "com.github.mdh34.hackup"
 
 #: data/com.github.mdh34.hackup.desktop.in:11
 msgid "hn;news;hacker;hackup;"
-msgstr ""
+msgstr "hn;noticias;hacker;hackup;"
 
 #: src/MainWindow.vala:49
 msgid "Unable to reach Hacker News"
-msgstr ""
+msgstr "No es posible comunicarse con Hacker News"
 
 #: src/MainWindow.vala:49
 msgid "Please connect to the internet to use HackUp"
-msgstr ""
+msgstr "Conéctese a Internet para utilizar HackUp"
 
 #: src/MainWindow.vala:59
 msgid "Settings"
-msgstr ""
+msgstr "Configuración"
 
 #: src/Widgets/PostEntry.vala:98
 msgid "Comments: "
-msgstr ""
+msgstr "Comentarios:"
 
 #: src/Widgets/PostEntry.vala:99
 msgid "Score: "
-msgstr ""
+msgstr "Puntaje:"
 
 #: src/Widgets/SettingsPopover.vala:25
 msgid "Sort stories by:"
-msgstr ""
+msgstr "Ordenar historias por:"
 
 #: src/Widgets/SettingsPopover.vala:26
 msgid "Top"
-msgstr ""
+msgstr "Principales"
 
 #: src/Widgets/SettingsPopover.vala:30
 msgid "Best"
-msgstr ""
+msgstr "Mejores"
 
 #: src/Widgets/SettingsPopover.vala:34
 msgid "New"
-msgstr ""
+msgstr "Recientes"
 
 #: src/Widgets/SettingsPopover.vala:54
 msgid "Cookies"
-msgstr ""
+msgstr "«Cookies»"

@@ -1,0 +1,50 @@
+@define-color colorAccent #FF6600;
+
+/* Title label styling */
+.titlesize {
+    font-size: 14px;
+}
+
+/* ListBoxRow styling */
+row {
+    padding: 5px;
+    border-bottom: 1px solid #abacae;
+}
+
+row:selected {
+    background-color: #e6e6e6;
+}
+
+.dark row:selected {
+    background-color: #666666
+}
+
+/* Label styling */
+.accent {
+  color: @theme_text_color;
+}
+
+row:selected label {
+    color: @theme_text_color;
+}
+
+row:selected .accent {
+    color: @theme_text_color;
+}
+
+/* Workaround for GTK Paned bug */
+
+paned.horizontal > separator {
+    background-image:
+        linear-gradient(
+            to right,
+            @menu_separator 1px,
+            @menu_separator_shadow 1px,
+            @menu_separator_shadow 2px,
+            transparent 2px
+        );
+    margin-right: -7px;
+    min-width: 8px;
+    margin-top: -7px;
+    min-height: 8px;
+}

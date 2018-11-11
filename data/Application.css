@@ -24,10 +24,6 @@ row:selected {
   color: @colorAccent;
 }
 
-link {
-    color: @colorAccent;
-}
-
 row:selected label {
     color: @theme_text_color;
 }

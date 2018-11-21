@@ -40,11 +40,19 @@ public class HackUp : Gtk.Application {
         var contrast_provider = new Gtk.CssProvider ();
         contrast_provider.load_from_resource ("/com/github/mdh34/hackup/contrast.css");
 
-        if (!settings.get_boolean ("accent")) {
-            change_provider (contrast_provider);
-        } else {
+        if (settings.get_boolean ("accent")) {
             change_provider (provider);
+        } else {
+            change_provider (contrast_provider);
         }
+
+        settings.changed["accent"].connect(()=> {
+            if (settings.get_boolean ("accent")) {
+                change_provider (provider);
+            } else {
+                change_provider (contrast_provider);
+            }
+        });
         
         var quit_action = new SimpleAction ("quit", null);
         add_action (quit_action);

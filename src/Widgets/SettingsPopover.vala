@@ -51,19 +51,30 @@ public class SettingsPopover : Gtk.Popover {
         var cookies_switch = new Gtk.Switch ();
         HackUp.settings.bind ("cookies", cookies_switch, "active", SettingsBindFlags.DEFAULT);
 
+        var contrast_switch = new Gtk.Switch ();
+        HackUp.settings.bind ("accent", contrast_switch, "active", SettingsBindFlags.DEFAULT);
+
         var cookies_label = new Gtk.Label (_("Cookies"));
         var switch_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
         switch_box.pack_start (cookies_label);
         switch_box.pack_start (cookies_switch);
 
+        var contrast_icon = new Gtk.Image.from_icon_name ("preferences-color", Gtk.IconSize.LARGE_TOOLBAR);
+        var contrast_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
+        contrast_box.homogeneous = true;
+        contrast_box.pack_start (contrast_icon);
+        contrast_box.pack_start (contrast_switch);
+
         var settings_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
         settings_box.border_width = 10;
+        settings_box.pack_start (contrast_box);
         settings_box.pack_start (switch_box);
         settings_box.pack_start (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
         settings_box.pack_start (settings_label);
         settings_box.pack_start (top_radio);
         settings_box.pack_start (best_radio);
         settings_box.pack_start (new_radio);
+        
         settings_box.show_all ();
         add (settings_box);
 

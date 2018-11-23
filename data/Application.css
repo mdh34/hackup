@@ -21,7 +21,7 @@ row:selected {
 
 /* Label styling */
 .accent {
-  color: @colorAccent;
+  color: #e65c00;
 }
 
 row:selected label {
@@ -29,7 +29,7 @@ row:selected label {
 }
 
 row:selected .accent {
-    color: @colorAccent;
+    color: #e65c00;
 }
 
 /* Workaround for GTK Paned bug */

@@ -38,7 +38,7 @@ public class PostEntry : Gtk.ListBoxRow {
         comments_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
         comments_context.add_class (Granite.STYLE_CLASS_ACCENT);
 
-        comments_button = new Gtk.Button ();
+        comments_button = new Gtk.Button();
         comments_button.clicked.connect (() => {
             if (MainWindow.stack.get_child_by_name (post.id.to_string ()) == null) {
                 MainWindow.stack.add_named (new CommentsList (post, post.id), post.id.to_string ());
@@ -46,12 +46,24 @@ public class PostEntry : Gtk.ListBoxRow {
             MainWindow.stack.set_visible_child_name (post.id.to_string ());
             MainWindow.stack.show_all ();
         });
-        comments_button.add (comments_label);
+        var comments_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+        var comments_icon = new Gtk.Image.from_icon_name("internet-chat", Gtk.IconSize.BUTTON);
+        comments_box.pack_start(comments_icon);
+        comments_box.pack_start(comments_label);
+
+        comments_button.add (comments_box);
 
         score_label = new Gtk.Label (null);
         var score_context = score_label.get_style_context ();
         score_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
         score_context.add_class (Granite.STYLE_CLASS_ACCENT);
+
+        var score_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        var score_icon = new Gtk.Image.from_icon_name ("go-up-symbolic", Gtk.IconSize.BUTTON);
+        score_icon.get_style_context ().add_class("symbolic-override");
+        score_box.pack_start (score_icon);
+        score_box.pack_start (score_label);
+
 
         title_label = new Gtk.Label (null);
         title_label.get_style_context ().add_class ("h4");
@@ -73,8 +85,8 @@ public class PostEntry : Gtk.ListBoxRow {
 
         var info_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
         info_box.pack_start (author_label);
-        info_box.pack_start (score_label);
-        info_box.pack_start (comments_button);
+        info_box.pack_start (score_box, true, false);
+        info_box.pack_start (comments_button, false);
 
         var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
         box.pack_start (title_label);
@@ -96,8 +108,8 @@ public class PostEntry : Gtk.ListBoxRow {
     private void update () {
         author_label.label = post.author;
 
-        comments_label.label = _("Comments: ") + post.comments.to_string ();
-        score_label.label = _("Score: ") + post.score.to_string ();
+        comments_label.label = post.comments.to_string ();
+        score_label.label = post.score.to_string ();
         title_label.label = post.title;
         title_label.set_tooltip_text (title_label.label);
     }

@@ -43,5 +43,10 @@
       <summary>dark mode state</summary>
       <description>stores the last known dark mode state</description>
     </key>
+    <key name="accent" type="b">
+      <default>true</default>
+      <summary>accent colour state</summary>
+      <description>stores the last known accent colour state</description>
+    </key>
   </schema>
 </schemalist>

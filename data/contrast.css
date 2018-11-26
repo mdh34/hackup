@@ -21,10 +21,6 @@ row:selected {
 
 /* Label styling */
 .accent {
-  color: #e65c00;
-}
-
-.symbolic-override {
   color: @theme_text_color;
 }
 
@@ -33,7 +29,7 @@ row:selected label {
 }
 
 row:selected .accent {
-    color: #e65c00;
+    color: @theme_text_color;
 }
 
 /* Workaround for GTK Paned bug */

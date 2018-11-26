@@ -2,5 +2,6 @@
 <gresources>
   <gresource prefix="/com/github/mdh34/hackup">
     <file alias="Application.css">Application.css</file>
+    <file alias="contrast.css">contrast.css</file>
   </gresource>
 </gresources>

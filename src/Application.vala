@@ -36,8 +36,24 @@ public class HackUp : Gtk.Application {
 
         var provider = new Gtk.CssProvider ();
         provider.load_from_resource ("/com/github/mdh34/hackup/Application.css");
-        Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        
+        var contrast_provider = new Gtk.CssProvider ();
+        contrast_provider.load_from_resource ("/com/github/mdh34/hackup/contrast.css");
 
+        if (settings.get_boolean ("accent")) {
+            change_provider (provider);
+        } else {
+            change_provider (contrast_provider);
+        }
+
+        settings.changed["accent"].connect(()=> {
+            if (settings.get_boolean ("accent")) {
+                change_provider (provider);
+            } else {
+                change_provider (contrast_provider);
+            }
+        });
+        
         var quit_action = new SimpleAction ("quit", null);
         add_action (quit_action);
         set_accels_for_action ("app.quit", {"<Control>q"});
@@ -49,5 +65,9 @@ public class HackUp : Gtk.Application {
     public static int main (string[] args) {
         var app = new HackUp ();
         return app.run (args);
+    }
+
+    public void change_provider (Gtk.CssProvider provider) {
+        Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
     }
 }

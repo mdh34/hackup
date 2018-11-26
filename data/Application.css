@@ -24,6 +24,10 @@ row:selected {
   color: #e65c00;
 }
 
+.symbolic-override {
+  color: @theme_text_color;
+}
+
 row:selected label {
     color: @theme_text_color;
 }

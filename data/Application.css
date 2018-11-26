@@ -24,6 +24,10 @@ row:selected {
   color: @colorAccent;
 }
 
+.symbolic-override {
+  color: @theme_text_color;
+}
+
 link {
     color: @colorAccent;
 }

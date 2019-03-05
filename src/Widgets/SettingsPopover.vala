@@ -21,33 +21,6 @@
 public class SettingsPopover : Gtk.Popover {
     public string current_sort;
     public SettingsPopover (View view) {
-        current_sort = HackUp.settings.get_string ("listtype");
-        var settings_label = new Gtk.Label (_("Sort stories by:"));
-        var top_radio = new Gtk.RadioButton.with_label (null, _("Top"));
-        top_radio.toggled.connect (() => {
-            toggled ("top");
-        });
-        var best_radio = new Gtk.RadioButton.with_label_from_widget (top_radio, _("Best"));
-        best_radio.toggled.connect (() => {
-            toggled ("best");
-        });
-        var new_radio = new Gtk.RadioButton.with_label_from_widget (top_radio, _("New"));
-        new_radio.toggled.connect (() => {
-            toggled ("new");
-        });
-
-        switch (current_sort) {
-            case "top":
-                top_radio.active = true;
-                break;
-            case "best":
-                best_radio.active = true;
-                break;
-            case "new":
-                new_radio.active = true;
-                break;
-        }
-
         var cookies_switch = new Gtk.Switch ();
         HackUp.settings.bind ("cookies", cookies_switch, "active", SettingsBindFlags.DEFAULT);
 
@@ -70,10 +43,6 @@ public class SettingsPopover : Gtk.Popover {
         settings_box.pack_start (contrast_box);
         settings_box.pack_start (switch_box);
         settings_box.pack_start (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
-        settings_box.pack_start (settings_label);
-        settings_box.pack_start (top_radio);
-        settings_box.pack_start (best_radio);
-        settings_box.pack_start (new_radio);
         
         settings_box.show_all ();
         add (settings_box);
@@ -81,9 +50,5 @@ public class SettingsPopover : Gtk.Popover {
         this.closed.connect (() => {
             view.setup_cookies (cookies_switch.active);
         });
-    }
-
-    private void toggled (string new_sort) {
-        HackUp.settings.set_string ("listtype", new_sort);
     }
 }

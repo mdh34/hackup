@@ -40,10 +40,25 @@ public class MainWindow : Gtk.Window {
         set_position (Gtk.WindowPosition.CENTER);
 
         var header = new Gtk.HeaderBar ();
-        header.get_style_context ().add_class ("default-decoration");
-        header.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
         header.set_show_close_button (true);
         set_titlebar (header);
+
+        var views_buttons = new Granite.Widgets.ModeButton ();
+        views_buttons.append_text (_ ("Top"));
+        views_buttons.append_text (_ ("Best"));
+        views_buttons.append_text (_ ("New"));
+        switch (HackUp.settings.get_string ("listtype")) {
+          case "top":
+            views_buttons.selected = 0;
+            break;
+          case "best":
+            views_buttons.selected = 1;
+            break;
+          case "new":
+            views_buttons.selected = 2;
+            break;
+        }
+        header.pack_start (views_buttons);
 
         if (!check_online ()) {
             var offline_view = new Granite.Widgets.AlertView (_("Unable to reach Hacker News"), _("Please connect to the internet to use HackUp"), "applications-internet");
@@ -100,8 +115,21 @@ public class MainWindow : Gtk.Window {
             list.get_style_context ().add_class ("dark");
         }
 
-        settings_popover.closed.connect (() => {
-            var list_sorting = HackUp.settings.get_string ("listtype");
+        views_buttons.mode_changed.connect (() => {
+          string list_sorting;
+          stdout.printf ("%d",views_buttons.selected);
+            switch (views_buttons.selected) {
+              case 0:
+                list_sorting = "top";
+                break;
+              case 1:
+                list_sorting = "best";
+                break;
+              case 2:
+                list_sorting = "new";
+                break;
+            }
+            HackUp.settings.set_string ("listtype", list_sorting);
             if (settings_popover.current_sort != list_sorting) {
                 var new_list = new PostList ();
                 scroller.remove (scroller.get_child ());

@@ -52,6 +52,8 @@ public class CommentEntry : Gtk.ListBoxRow {
         author_label = new Gtk.Label (null);
         author_group.add_widget (author_label);
 
+        selectable = false;
+
         content_label = new Gtk.TextView ();
         content_label.wrap_mode = Gtk.WrapMode.WORD;
         content_label.editable = false;

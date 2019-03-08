@@ -73,12 +73,12 @@ public class CommentEntry : Gtk.ListBoxRow {
         sub_button = new Gtk.CheckButton.with_label (_("Replies"));
         sub_button.toggled.connect (() => {
                 if (revealer.get_child () == null) {
-                  revealer.add (new CommentsList (post, last));
+                    revealer.add (new CommentsList (post, last));
                 }
                 if (sub_button.active) {
-                  revealer.reveal_child = true; 
+                    revealer.reveal_child = true;
                 } else {
-                  revealer.reveal_child = false;
+                    revealer.reveal_child = false;
                 }
         });
 

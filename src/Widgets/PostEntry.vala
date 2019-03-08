@@ -38,19 +38,19 @@ public class PostEntry : Gtk.ListBoxRow {
         comments_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
         comments_context.add_class (Granite.STYLE_CLASS_ACCENT);
 
-        comments_button = new Gtk.Button();
+        comments_button = new Gtk.Button ();
         comments_button.clicked.connect (() => {
             if (MainWindow.comments_view.get_child () != null) {
-              MainWindow.comments_view.get_child ().destroy (); 
+                MainWindow.comments_view.get_child ().destroy ();
             }
             MainWindow.comments_view.add (new CommentsList (post, post.id));
             MainWindow.stack.set_visible_child_name ("comments_view");
             MainWindow.stack.show_all ();
         });
-        var comments_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-        var comments_icon = new Gtk.Image.from_icon_name("internet-chat", Gtk.IconSize.BUTTON);
-        comments_box.pack_start(comments_icon);
-        comments_box.pack_start(comments_label);
+        var comments_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        var comments_icon = new Gtk.Image.from_icon_name ("internet-chat", Gtk.IconSize.BUTTON);
+        comments_box.pack_start (comments_icon);
+        comments_box.pack_start (comments_label);
 
         comments_button.add (comments_box);
 
@@ -61,7 +61,7 @@ public class PostEntry : Gtk.ListBoxRow {
 
         var score_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
         var score_icon = new Gtk.Image.from_icon_name ("go-up-symbolic", Gtk.IconSize.BUTTON);
-        score_icon.get_style_context ().add_class("symbolic-override");
+        score_icon.get_style_context ().add_class ("symbolic-override");
         score_box.pack_start (score_icon);
         score_box.pack_start (score_label);
 

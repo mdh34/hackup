@@ -40,10 +40,11 @@ public class PostEntry : Gtk.ListBoxRow {
 
         comments_button = new Gtk.Button();
         comments_button.clicked.connect (() => {
-            if (MainWindow.stack.get_child_by_name (post.id.to_string ()) == null) {
-                MainWindow.stack.add_named (new CommentsList (post, post.id), post.id.to_string ());
+            if (MainWindow.comments_view.get_child () != null) {
+              MainWindow.comments_view.get_child ().destroy (); 
             }
-            MainWindow.stack.set_visible_child_name (post.id.to_string ());
+            MainWindow.comments_view.add (new CommentsList (post, post.id));
+            MainWindow.stack.set_visible_child_name ("comments_view");
             MainWindow.stack.show_all ();
         });
         var comments_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);

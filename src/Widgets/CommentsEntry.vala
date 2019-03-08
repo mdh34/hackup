@@ -44,8 +44,9 @@ public class CommentEntry : Gtk.ListBoxRow {
 
     private Gtk.Label author_label;
     private Gtk.TextView content_label;
-    private Gtk.Button sub_button;
+    private Gtk.CheckButton sub_button;
     private Gtk.Box info_box;
+    private Gtk.Revealer revealer;
 
     public CommentEntry (int64 id, int64 last, Gtk.SizeGroup author_group) {
         author_label = new Gtk.Label (null);
@@ -55,9 +56,13 @@ public class CommentEntry : Gtk.ListBoxRow {
         author_context.add_class (Granite.STYLE_CLASS_ACCENT);
         author_group.add_widget (author_label);
 
+        selectable = false;
+
         content_label = new Gtk.TextView ();
         content_label.wrap_mode = Gtk.WrapMode.WORD;
         content_label.editable = false;
+
+        revealer = new Gtk.Revealer ();
 
         this.activate.connect (() => {
             if (post.story_uri != null) {
@@ -65,13 +70,16 @@ public class CommentEntry : Gtk.ListBoxRow {
             }
         });
 
-        sub_button = new Gtk.Button.with_label (_("Replies"));
-        sub_button.clicked.connect (() => {
-            if (MainWindow.stack.get_child_by_name (post.id.to_string ()) == null) {
-                MainWindow.stack.add_named (new CommentsList (post, last), post.id.to_string ());
-            }
-            MainWindow.stack.set_visible_child_name (post.id.to_string ());
-            MainWindow.stack.show_all ();
+        sub_button = new Gtk.CheckButton.with_label (_("Replies"));
+        sub_button.toggled.connect (() => {
+                if (revealer.get_child () == null) {
+                  revealer.add (new CommentsList (post, last));
+                }
+                if (sub_button.active) {
+                  revealer.reveal_child = true; 
+                } else {
+                  revealer.reveal_child = false;
+                }
         });
 
         info_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
@@ -81,6 +89,7 @@ public class CommentEntry : Gtk.ListBoxRow {
         var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
         box.pack_start (content_label);
         box.pack_start (info_box,true, true);
+        box.pack_start (revealer);
         add (box);
 
         post = new Post (id);

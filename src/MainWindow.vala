@@ -21,6 +21,7 @@
 
 public class MainWindow : Gtk.Window {
     static View view;
+    public static Gtk.ScrolledWindow comments_view;
     public static Gtk.Stack stack;
     public MainWindow (Gtk.Application application) {
         Object (
@@ -32,8 +33,10 @@ public class MainWindow : Gtk.Window {
 
     static construct {
         view = new View ();
+        comments_view = new Gtk.ScrolledWindow (null,null);
         stack = new Gtk.Stack ();
         stack.add_named (view, "view");
+        stack.add_named (comments_view, "comments_view");
     }
 
     construct {

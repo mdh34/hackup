@@ -50,6 +50,10 @@ public class CommentEntry : Gtk.ListBoxRow {
 
     public CommentEntry (int64 id, int64 last, Gtk.SizeGroup author_group) {
         author_label = new Gtk.Label (null);
+        author_label.xalign = 0;
+        var author_context = author_label.get_style_context ();
+        author_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
+        author_context.add_class (Granite.STYLE_CLASS_ACCENT);
         author_group.add_widget (author_label);
 
         selectable = false;

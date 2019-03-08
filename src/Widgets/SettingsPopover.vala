@@ -42,7 +42,6 @@ public class SettingsPopover : Gtk.Popover {
         settings_box.border_width = 10;
         settings_box.pack_start (contrast_box);
         settings_box.pack_start (switch_box);
-        settings_box.pack_start (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
         
         settings_box.show_all ();
         add (settings_box);

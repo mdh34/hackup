@@ -29,6 +29,11 @@
     </screenshot>
   </screenshots>
   <releases>
+     <release version="1.1.7" date="2019-05-28">
+      <description>
+        <p>Added comments tree view and tabbed headerbar, fixed memory leaks</p>
+      </description>
+    </release>
     <release version="1.1.6" date="2018-11-28">
       <description>
         <p>UI tweaks and translation updates</p>

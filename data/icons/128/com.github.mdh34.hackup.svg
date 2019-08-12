@@ -28,12 +28,12 @@
      id="namedview51"
      showgrid="true"
      inkscape:zoom="5.6568542"
-     inkscape:cx="12.046644"
-     inkscape:cy="33.685984"
+     inkscape:cx="30.371578"
+     inkscape:cy="55.776701"
      inkscape:window-x="0"
      inkscape:window-y="28"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="layer5"
      inkscape:snap-page="true"
      showguides="true"
      inkscape:guide-bbox="true">
@@ -67,12 +67,23 @@
     <linearGradient
        id="linearGradient8837">
       <stop
-         offset="0"
+         id="stop1094"
          style="stop-color:#ecba3d;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop1096"
+         style="stop-color:#f2d666;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient8837-8">
+      <stop
+         offset="0"
+         style="stop-color:#d4d4d4;stop-opacity:1"
          id="stop8833" />
       <stop
          offset="1"
-         style="stop-color:#f2d666;stop-opacity:1"
+         style="stop-color:#fafafa;stop-opacity:1"
          id="stop8835" />
     </linearGradient>
     <linearGradient
@@ -802,10 +813,10 @@
     </mask>
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient8837"
+       xlink:href="#linearGradient8837-8"
        id="linearGradient8831"
-       x1="90"
-       y1="58"
+       x1="95.812561"
+       y1="62.382023"
        x2="42"
        y2="66"
        gradientUnits="userSpaceOnUse"
@@ -819,7 +830,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>

@@ -29,6 +29,11 @@
     </screenshot>
   </screenshots>
   <releases>
+     <release version="1.1.8" date="2019-09-25">
+      <description>
+        <p>New icon courtesy of Fatih20</p>
+      </description>
+     </release>
      <release version="1.1.7" date="2019-05-28">
       <description>
         <p>Added comments tree view and tabbed headerbar, fixed memory leaks</p>

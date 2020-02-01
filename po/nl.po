@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: com.github.mdh34.hackup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 20:58+0000\n"
-"PO-Revision-Date: 2018-10-27 11:44+0100\n"
+"PO-Revision-Date: 2020-02-01 14:06+0100\n"
 "Last-Translator: Ciarán Ainsworth <ciaranainsworth@outlook.com>\n"
 "Language-Team: none\n"
 "Language: nl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #: data/com.github.mdh34.hackup.appdata.xml.in:7
 #: data/com.github.mdh34.hackup.desktop.in:3
@@ -27,20 +27,19 @@ msgstr "HackUp"
 #: data/com.github.mdh34.hackup.appdata.xml.in:8
 #: data/com.github.mdh34.hackup.desktop.in:5
 msgid "Read Hacker News from the desktop"
-msgstr "Lees Hacker News van het bureaublad"
+msgstr "Lees Hacker News op je computer"
 
 #: data/com.github.mdh34.hackup.appdata.xml.in:10
-#, fuzzy
 msgid "Read Hacker News stories and comments distraction-free from the desktop"
-msgstr "Lees Hacker News-verhalen en opmerkingen van het bureaublad"
+msgstr "Lees Hacker News-verhalen en -reacties zonder afleiding op je computer"
 
 #: data/com.github.mdh34.hackup.appdata.xml.in:11
 msgid "Sort by top, new and best stories"
-msgstr "Sorteer op top, nieuwe en beste verhalen"
+msgstr "Sorteer verhalen op 'top', 'nieuw' en 'beste'"
 
 #: data/com.github.mdh34.hackup.appdata.xml.in:12
 msgid "Enable or disable site cookies"
-msgstr ""
+msgstr "Schakel cookies in of uit"
 
 #: data/com.github.mdh34.hackup.appdata.xml.in:17
 msgid "Matt Harris"
@@ -56,11 +55,11 @@ msgstr "hn;nieuws;hacker;hackup;"
 
 #: src/MainWindow.vala:49
 msgid "Unable to reach Hacker News"
-msgstr "Kan Hacker News niet bereiken"
+msgstr "Kan geen verbinding maken met Hacker News"
 
 #: src/MainWindow.vala:49
 msgid "Please connect to the internet to use HackUp"
-msgstr "Maak verbinding met internet om HackUp te gebruiken"
+msgstr "Maak verbinding met het internet om HackUp te gebruiken"
 
 #: src/MainWindow.vala:59
 msgid "Settings"
@@ -76,7 +75,7 @@ msgstr "Score: "
 
 #: src/Widgets/SettingsPopover.vala:25
 msgid "Sort stories by:"
-msgstr "Sorteer verhalen op:"
+msgstr "Verhalen sorteren op:"
 
 #: src/Widgets/SettingsPopover.vala:26
 msgid "Top"
@@ -84,7 +83,7 @@ msgstr "Top"
 
 #: src/Widgets/SettingsPopover.vala:30
 msgid "Best"
-msgstr "Best"
+msgstr "Beste"
 
 #: src/Widgets/SettingsPopover.vala:34
 msgid "New"

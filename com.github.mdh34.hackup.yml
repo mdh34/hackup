@@ -17,8 +17,6 @@ modules:
   config-opts:
   - "--buildtype=release"
   sources:
-  - type: archive
-    url: https://github.com/mdh34/hackup/archive/1.1.8.tar.gz
-    sha256: c2391d56f0413803be329dd1942132fd9ddc1021649868e61281d8dccffe2b1b
-
+  - type: dir
+    path: .
 
